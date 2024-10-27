@@ -6,7 +6,7 @@ const coins = ref(0);
 
 // Function to handle coin updates
 const updateCoins = (amount: number) => {
-  coins.value += amount; // Update the coins
+  coins.value += amount;
 };
 </script>
 
@@ -15,7 +15,7 @@ const updateCoins = (amount: number) => {
     <NavBar :coins="coins" />
   </header>
 
-  <main>
-    <HeroBanner  @update-coins="updateCoins" />
+  <main class="min-h-[calc(100vh-80px)]">
+    <HeroBanner @update-coins="updateCoins" />
   </main>
 </template>
