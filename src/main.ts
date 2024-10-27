@@ -1,6 +1,17 @@
-import './assets/main.css'
+import './assets/main.css';
+import 'vue3-toastify/dist/index.css';
+import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify';
+import { createApp } from 'vue';
+import App from './App.vue';
 
-import { createApp } from 'vue'
-import App from './App.vue'
+const toastOptions: ToastContainerOptions = {
+  autoClose: 2500,
+  closeButton: false,
+  closeOnClick: true,
+  hideProgressBar: true,
+  transition: 'zoom',
+  position: 'top-center',
+  theme: 'dark',
+};
 
-createApp(App).mount('#app')
+createApp(App).use(Vue3Toastify, toastOptions).mount('#app');

@@ -18,7 +18,7 @@
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <h4>Price: ${{ price }}</h4>
       <button
-        class="button"
+        class="choose-button"
         :aria-pressed="pressed"
         @mouseenter="hover = true"
         @mouseleave="hover = false"
@@ -69,20 +69,20 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.button {
+.choose-button {
   @apply font-semibold border rounded-lg shadow-md shadow-gray-700 px-3 py-1.5 transition-all duration-300 ease-in-out;
 }
 
-.button:hover {
+.choose-button:hover {
   @apply bg-gray-200 -translate-y-1; /* Lift the button slightly */
 }
 
-.button:focus {
+.choose-button:focus {
   @apply border shadow-md shadow-gray-600;
 }
 
 /* Add the click effect */
-.button:active {
+.choose-button:active {
   @apply transform translate-y-1 border shadow-sm shadow-gray-400; /* Move down when pressed */
 }
 </style>
