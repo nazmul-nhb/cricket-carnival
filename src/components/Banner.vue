@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import cricket from '../assets/images/cricket.svg';
+import cricket from '../assets/images/cricket.png';
 
 export default defineComponent({
   data() {
