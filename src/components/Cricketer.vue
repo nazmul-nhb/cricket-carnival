@@ -2,7 +2,9 @@
   <div
     class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4"
   >
-    <h2 class="text-lg font-bold">{{ name }}</h2>
+    <h2 class="text-lg font-bold flex items-center gap-1">
+      <FaUser /> {{ name }}
+    </h2>
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <div class="flex items-center gap-2">
         <img class="w-8" :src="logo" alt="Board Logo" />
@@ -10,13 +12,17 @@
       </div>
       <h4 class="text-gray-700">{{ type }}</h4>
     </div>
-    <h3 class="font-semibold !mt-8">Rating: {{ rating }}</h3>
+    <h3 class="font-semibold !mt-8 flex items-center gap-1">
+      <FaRankingStar /> Rating: {{ rating }}
+    </h3>
     <div class="flex items-center justify-between gap-4 flex-wrap flex-1">
-      <h4>{{ battingStyle }}</h4>
-      <h4>{{ bowlingStyle }}</h4>
+      <h4 class="flex items-center gap-1"><TbCricket />{{ battingStyle }}</h4>
+      <h4 class="flex items-center gap-1">
+        <BiCricketBall /> {{ bowlingStyle }}
+      </h4>
     </div>
     <div class="flex items-center justify-between gap-4 flex-wrap">
-      <h4>Price: ${{ price }}</h4>
+      <h4 class="flex items-center gap-1"><GiPriceTag /> ${{ price }}</h4>
       <button
         class="choose-button"
         :aria-pressed="pressed"
@@ -35,6 +41,10 @@
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
 import { defineComponent, ref } from 'vue';
+import { BiCricketBall } from 'vue3-icons/bi';
+import { TbCricket } from 'vue3-icons/tb';
+import { GiPriceTag } from 'vue3-icons/gi';
+import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
 
 export default defineComponent({
   props: {
@@ -42,6 +52,13 @@ export default defineComponent({
       type: Object as () => ICricketer,
       required: true,
     },
+  },
+  components: {
+    BiCricketBall,
+    TbCricket,
+    GiPriceTag,
+    FaRankingStar,
+    FaUser,
   },
   setup(props) {
     const { name, country, type, rating, battingStyle, bowlingStyle, price } =
