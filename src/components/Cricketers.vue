@@ -1,24 +1,24 @@
 <template>
-  <div>
-<Cricketer/>
-  </div>
+  <section class="container mx-auto my-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <Cricketer
+      v-for="cricketer in cricketers"
+      :key="cricketer.id"
+      :cricketer="cricketer"
+    />
+  </section>
 </template>
+
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { cricketers, logos } from '@/utilities/cricketers';
+import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 
-// console.log(
-//   cricketers.map(cricketer => {
-//     return {
-//       logo: logos[cricketer.country],
-//     };
-//   }),
-// );
-
 export default defineComponent({
+  data() {
+    return { cricketers };
+  },
   components: {
-    Cricketer
+    Cricketer,
   },
 });
 </script>
