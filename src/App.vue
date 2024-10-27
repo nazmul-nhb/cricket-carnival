@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Banner from './components/Banner.vue';
 import Cricketers from './components/Cricketers.vue';
-import Navbar from './components/Navbar.vue';
+import Navbar from './components/Temp.vue';
 import { toast } from 'vue3-toastify';
 import { ref } from 'vue';
 const coins = ref(0);
