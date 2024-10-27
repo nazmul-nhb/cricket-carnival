@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import HeroBanner from './components/HeroBanner.vue';
-import NavBar from './components/NavBar.vue';
+import Banner from './components/Banner.vue';
+import Cricketers from './components/Cricketers.vue';
+import Navbar from './components/Navbar.vue';
 import { ref } from 'vue';
 const coins = ref(0);
 
@@ -12,10 +13,11 @@ const updateCoins = (amount: number) => {
 
 <template>
   <header>
-    <NavBar :coins="coins" />
+    <Navbar :coins="coins" />
   </header>
 
   <main class="min-h-[calc(100vh-80px)] mx-6">
-    <HeroBanner @update-coins="updateCoins" />
+    <Banner @update-coins="updateCoins" />
+    <Cricketers/>
   </main>
 </template>

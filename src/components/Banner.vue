@@ -9,7 +9,7 @@
       <h2 class="text-3xl lg:text-4xl font-bold">
         Assemble Your Ultimate Dream 11 Cricket Team
       </h2>
-      <p class="mt-2 text-gray-300 ">Beyond Boundaries Beyond Limits</p>
+      <p class="mt-2 text-gray-300 text-lg">Beyond Boundaries Beyond Limits</p>
       <button
         @click="addCoins"
         class="p-2 bg-transparent rounded-2xl border border-yellow-600 text-lg font-semibold"
