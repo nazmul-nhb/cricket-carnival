@@ -1,5 +1,7 @@
 <template>
-  <nav class="bg-gray-800/85 h-20 p-4 text-white sticky top-0 z-30 backdrop-blur-sm backdrop-filter">
+  <nav
+    class="bg-gray-800/85 w-full h-20 p-4 text-white fixed top-0 z-30 backdrop-blur-sm backdrop-filter"
+  >
     <div class="container mx-auto flex justify-between items-center">
       <figure class="flex items-center gap-2">
         <img :src="logo" alt="Cricket Carnival Logo" class="w-14" />

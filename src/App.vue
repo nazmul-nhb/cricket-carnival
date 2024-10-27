@@ -15,7 +15,7 @@ const updateCoins = (amount: number) => {
     <NavBar :coins="coins" />
   </header>
 
-  <main class="min-h-[calc(100vh-80px)]">
+  <main class="min-h-[calc(100vh-80px)] mx-6">
     <HeroBanner @update-coins="updateCoins" />
   </main>
 </template>
