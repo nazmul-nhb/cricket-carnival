@@ -14,3 +14,16 @@ export interface ICricketer {
     | 'Right-Arm-Spin'
     | 'None';
 }
+
+export interface IStoredId {
+  id: string;
+  selectedAt: string | Date;
+}
+
+export interface IStoRes {
+  success: boolean;
+}
+
+export interface ISaveRes extends IStoRes {
+  isExist: boolean;
+}

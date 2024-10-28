@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4 hover:scale-105 hover:bg-gray-200 transition-all duration-500"
+    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4 hover:scale-105 hover:bg-gray-200/70 transition-all duration-500"
   >
     <h2 class="text-lg font-bold flex items-center gap-1">
       <FaUser /> {{ name }}
@@ -47,7 +47,7 @@ import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
 import { toast } from 'vue3-toastify';
-import { saveItemToStorage } from '@/utilities/localStorage';
+import { saveToLocalStorage } from '@/utilities/localStorage';
 
 export default defineComponent({
   props: {
@@ -89,10 +89,13 @@ export default defineComponent({
 
     const choosePlayer = () => {
       if (props.coins >= price) {
-        const result = saveItemToStorage('selected', id);
+        const result = saveToLocalStorage('selected-cricketers', id);
 
         if (!result.success) {
-          return toast.warn(`${lastName} is already in your team!`);
+          if (result.isExist) {
+            return toast.warn(`${lastName} is already in your team!`);
+          }
+          return toast.error(`Already 11 players in your team!`);
         }
         emit('update-coins', price, false);
         toast.success(`You have selected ${lastName}!`);
