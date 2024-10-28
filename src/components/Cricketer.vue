@@ -44,22 +44,16 @@
 <script lang="ts">
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
-import { defineComponent, ref, type PropType } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { BiSolidCricketBall } from 'vue3-icons/bi';
 import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
-import { toast } from 'vue3-toastify';
-import { saveToLocalStorage } from '@/utilities/localStorage';
 
 export default defineComponent({
   props: {
     cricketer: {
       type: Object as () => ICricketer,
-      required: true,
-    },
-    coins: {
-      type: Number as PropType<number>,
       required: true,
     },
   },
@@ -70,7 +64,7 @@ export default defineComponent({
     FaRankingStar,
     FaUser,
   },
-  emits: ['update-coins'],
+  emits: ['player-selected'],
   setup(props, { emit }) {
     const {
       id,
@@ -92,20 +86,7 @@ export default defineComponent({
     const pressed = ref(false);
 
     const choosePlayer = () => {
-      if (props.coins >= price) {
-        const result = saveToLocalStorage('selected-cricketers', id);
-
-        if (!result.success) {
-          if (result.isExist) {
-            return toast.warn(`${lastName} is already in your team!`);
-          }
-          return toast.error(`Already 11 players in your team!`);
-        }
-        emit('update-coins', price, false);
-        toast.success(`You have selected ${lastName}!`);
-      } else {
-        toast.error(`Insufficient Balance!`);
-      }
+      emit('player-selected', id, price, lastName);
     };
 
     return {

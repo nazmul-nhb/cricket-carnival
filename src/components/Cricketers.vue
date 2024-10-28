@@ -2,6 +2,10 @@
   <!-- <h3>Total {{ cricketers.length }}</h3>
   <h3 v-if="selectedCountry !== ''" >{{selectedCountry}} {{ countrySpecific.length }}</h3> -->
   <section class="container mx-auto my-16">
+    <div class="flex justify-end gap-4">
+      <button>Available</button>
+      <button>Selected({{ selectedCount }})</button>
+    </div>
     <div>
       <h3 class="text-xl font-semibold">Available Players</h3>
       <div
@@ -113,9 +117,8 @@
         <Cricketer
           v-for="cricketer in filteredCricketers"
           :key="cricketer.id"
-          :coins="coins"
           :cricketer="cricketer"
-          @update-coins="$emit('update-coins', $event)"
+          @player-selected="addSelectedPlayer"
         />
       </div>
     </div>
@@ -129,58 +132,90 @@ import { computed, defineComponent, ref, type PropType } from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 import Selected from './Selected.vue';
-import { getFromLocalStorage } from '@/utilities/localStorage';
-
-const selectedCountry = ref<string>('');
-const selectedType = ref<string>('');
-const sortBy = ref<string>('');
-
-const setCountry = (country: string) => {
-  selectedCountry.value = country;
-};
-
-const setType = (type: string) => {
-  selectedType.value = type;
-};
-
-const setSortBy = (sortOption: string) => {
-  sortBy.value = sortOption;
-};
-
-const filteredCricketers = computed(() => {
-  let result = cricketers;
-
-  // Filter by country
-  if (selectedCountry.value) {
-    result = result.filter(cric => cric.country === selectedCountry.value);
-  }
-
-  // Filter by type
-  if (selectedType.value) {
-    result = result.filter(cric => cric.type === selectedType.value);
-  }
-
-  // Sort by price or rating based on sortBy selection
-  if (sortBy.value) {
-    result = [...result];
-    if (sortBy.value === 'price-asc') {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortBy.value === 'price-desc') {
-      result.sort((a, b) => b.price - a.price);
-    } else if (sortBy.value === 'rating-asc') {
-      result.sort((a, b) => a.rating - b.rating);
-    } else if (sortBy.value === 'rating-desc') {
-      result.sort((a, b) => b.rating - a.rating);
-    }
-  }
-
-  return result;
-});
-
-const storedIds = getFromLocalStorage('selected-cricketers');
+import { toast } from 'vue3-toastify';
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from '@/utilities/localStorage';
 
 export default defineComponent({
-  data() {
+  components: { Cricketer, Selected },
+  props: {
+    coins: {
+      type: Number as PropType<number>,
+      required: true,
+    },
+  },
+  setup(props, { emit }) {
+    const storedIds = ref(getFromLocalStorage('selected-cricketers'));
+    const selectedCountry = ref<string>('');
+    const selectedType = ref<string>('');
+    const sortBy = ref<string>('');
+
+    const setCountry = (country: string) => {
+      selectedCountry.value = country;
+    };
+
+    const setType = (type: string) => {
+      selectedType.value = type;
+    };
+
+    const setSortBy = (sortOption: string) => {
+      sortBy.value = sortOption;
+    };
+
+    const filteredCricketers = computed(() => {
+      let result = cricketers;
+
+      // Filter by country
+      if (selectedCountry.value) {
+        result = result.filter(cric => cric.country === selectedCountry.value);
+      }
+
+      // Filter by type
+      if (selectedType.value) {
+        result = result.filter(cric => cric.type === selectedType.value);
+      }
+
+      // Sort by price or rating based on selection
+      if (sortBy.value) {
+        result = [...result];
+        if (sortBy.value === 'price-asc') {
+          result.sort((a, b) => a.price - b.price);
+        } else if (sortBy.value === 'price-desc') {
+          result.sort((a, b) => b.price - a.price);
+        } else if (sortBy.value === 'rating-asc') {
+          result.sort((a, b) => a.rating - b.rating);
+        } else if (sortBy.value === 'rating-desc') {
+          result.sort((a, b) => b.rating - a.rating);
+        }
+      }
+
+      return result;
+    });
+
+    const selectedCount = computed(() => storedIds.value.length);
+
+    const addSelectedPlayer = (id: string, price: number, name: string) => {
+      if (props.coins >= price) {
+        const result = saveToLocalStorage('selected-cricketers', id);
+
+        if (!result.success) {
+          if (result.isExist) {
+            return toast.warn(`${name} is already in your team!`);
+          }
+          return toast.error(`Already 11 players in your team!`);
+        }
+
+        emit('update-coins', price, false);
+        toast.success(`You have selected ${name}!`);
+
+        storedIds.value.push({ id, selectedAt: new Date() });
+      } else {
+        toast.error(`Insufficient Balance!`);
+      }
+    };
+
     return {
       cricketers,
       filteredCricketers,
@@ -191,17 +226,13 @@ export default defineComponent({
       setType,
       setSortBy,
       storedIds,
+      selectedCount,
+      addSelectedPlayer,
     };
-  },
-  props: {
-    coins: {
-      type: Number as PropType<number>,
-      required: true,
-    },
-  },
-  components: {
-    Cricketer,
-    Selected,
   },
 });
 </script>
+
+<style scoped>
+
+</style>
