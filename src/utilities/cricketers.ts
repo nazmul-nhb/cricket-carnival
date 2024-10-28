@@ -24,29 +24,6 @@ export const cricketers: ICricketer[] = [
     bowlingStyle: 'None',
   },
   {
-    id: 'nz105bat',
-    name: 'Glen Turner',
-    image: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Glen_Turner.jpg',
-    country: 'New Zealand',
-    price: 450000,
-    rating: 85,
-    type: 'Batsman',
-    battingStyle: 'Right-Hand-Bat',
-    bowlingStyle: 'None',
-  },
-  {
-    id: 'nz106bat',
-    name: 'Martin Guptill',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d2/Martin_Guptill_2015.jpg',
-    country: 'New Zealand',
-    price: 550000,
-    rating: 88,
-    type: 'Batsman',
-    battingStyle: 'Right-Hand-Bat',
-    bowlingStyle: 'None',
-  },
-  {
     id: 'nz107bat',
     name: 'Nathan Astle',
     image: 'https://upload.wikimedia.org/wikipedia/en/6/63/Nathan_Astle.jpg',
@@ -294,7 +271,7 @@ export const cricketers: ICricketer[] = [
   },
   {
     id: 'sa101bat',
-    name: 'AB de Villiers',
+    name: 'AB de-Villiers',
     image: 'https://example.com/images/ab_de_villiers.jpg',
     country: 'South Africa',
     price: 460000,
@@ -326,6 +303,17 @@ export const cricketers: ICricketer[] = [
     bowlingStyle: 'None',
   },
   {
+    id: 'nz105bat',
+    name: 'Glen Turner',
+    image: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Glen_Turner.jpg',
+    country: 'New Zealand',
+    price: 450000,
+    rating: 85,
+    type: 'Batsman',
+    battingStyle: 'Right-Hand-Bat',
+    bowlingStyle: 'None',
+  },
+  {
     id: 'aus104bwl',
     name: 'Glenn McGrath',
     image: 'https://example.com/images/glenn_mcgrath.jpg',
@@ -349,7 +337,7 @@ export const cricketers: ICricketer[] = [
   },
   {
     id: 'pak101bat',
-    name: 'Inzamam-ul-Haq',
+    name: 'Inzamam-ul Haq',
     image: 'https://example.com/images/inzamam_ul_haq.jpg',
     country: 'Pakistan',
     price: 420000,
@@ -623,6 +611,18 @@ export const cricketers: ICricketer[] = [
     bowlingStyle: 'Right-Arm-Pace',
   },
   {
+    id: 'nz106bat',
+    name: 'Martin Guptill',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/d/d2/Martin_Guptill_2015.jpg',
+    country: 'New Zealand',
+    price: 550000,
+    rating: 88,
+    type: 'Batsman',
+    battingStyle: 'Right-Hand-Bat',
+    bowlingStyle: 'None',
+  },
+  {
     id: 'aus109wkt',
     name: 'Matthew Wade',
     image: 'https://example.com/images/matthew_wade.jpg',
@@ -712,7 +712,7 @@ export const cricketers: ICricketer[] = [
   },
   {
     id: 'ban202all',
-    name: 'Shakib Al Hasan',
+    name: 'Shakib Al-Hasan',
     image: 'https://example.com/images/shakib_al_hasan.jpg',
     country: 'Bangladesh',
     price: 450000,
@@ -866,7 +866,7 @@ export const cricketers: ICricketer[] = [
   },
   {
     id: 'afg208bwl',
-    name: 'Mujeeb Ur Rahman',
+    name: 'Mujeeb-ur Rahman',
     image: 'https://example.com/images/mujeeb_ur_rahman.jpg',
     country: 'Afghanistan',
     price: 410000,

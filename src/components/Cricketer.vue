@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4"
+    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4 hover:scale-105 hover:bg-gray-200 transition-all duration-500"
   >
     <h2 class="text-lg font-bold flex items-center gap-1">
       <FaUser /> {{ name }}
@@ -82,6 +82,8 @@ export default defineComponent({
 
     const logo = logos[country];
 
+    const lastName = name.split(' ')[1] || name;
+
     const hover = ref(false);
     const pressed = ref(false);
 
@@ -90,12 +92,10 @@ export default defineComponent({
         const result = saveItemToStorage('selected', id);
 
         if (!result.success) {
-          return toast.warn(
-            `${name.split(' ')[1] || name} is already in your team!`,
-          );
+          return toast.warn(`${lastName} is already in your team!`);
         }
         emit('update-coins', price, false);
-        toast.success(`You have selected ${name.split(' ')[1] || name}!`);
+        toast.success(`You have selected ${lastName}!`);
       } else {
         toast.error(`Insufficient Balance!`);
       }
