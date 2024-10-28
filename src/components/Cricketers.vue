@@ -1,12 +1,26 @@
 <template>
   <!-- <h3>Total {{ cricketers.length }}</h3>
   <h3 v-if="selectedCountry !== ''" >{{selectedCountry}} {{ countrySpecific.length }}</h3> -->
-  <section class="container mx-auto my-16">
+  <section class="container mx-auto my-16 min-h-[50vh]">
     <div class="flex justify-end gap-4">
-      <button>Available</button>
-      <button>Selected({{ selectedCount }})</button>
+      <button
+        class="toggle-button"
+        :class="{ 'bg-orange-300': !selectedView }"
+        @click="setSelectedView(false)"
+      >
+        Available
+      </button>
+      <button
+        class="toggle-button"
+        :class="{ 'bg-orange-300': selectedView }"
+        @click="setSelectedView(true)"
+      >
+        Selected({{ selectedCount }})
+      </button>
     </div>
-    <div>
+
+    <!-- Available Players -->
+    <div v-if="!selectedView">
       <h3 class="text-xl font-semibold">Available Players</h3>
       <div
         class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 my-6 pb-5 border-b border-gray-300 text-sm"
@@ -123,7 +137,10 @@
       </div>
     </div>
 
-    <Selected :selectedIds="storedIds" />
+    <!-- Selected Players -->
+    <div v-else>
+      <Selected :selectedIds="storedIds" />
+    </div>
   </section>
 </template>
 
@@ -151,6 +168,7 @@ export default defineComponent({
     const selectedCountry = ref<string>('');
     const selectedType = ref<string>('');
     const sortBy = ref<string>('');
+    const selectedView = ref<boolean>(false);
 
     const setCountry = (country: string) => {
       selectedCountry.value = country;
@@ -162,6 +180,10 @@ export default defineComponent({
 
     const setSortBy = (sortOption: string) => {
       sortBy.value = sortOption;
+    };
+
+    const setSelectedView = (view: boolean) => {
+      selectedView.value = view;
     };
 
     const filteredCricketers = computed(() => {
@@ -228,11 +250,28 @@ export default defineComponent({
       storedIds,
       selectedCount,
       addSelectedPlayer,
+      selectedView,
+      setSelectedView,
     };
   },
 });
 </script>
 
 <style scoped>
+.toggle-button {
+  @apply font-semibold border rounded-lg shadow-md shadow-orange-700 px-3 py-1.5 transition-all duration-300 ease-in-out;
+}
 
+.toggle-button:hover {
+  @apply bg-orange-200 -translate-y-1; /* Lift the button slightly */
+}
+
+.toggle-button:focus {
+  @apply border shadow-md shadow-orange-600;
+}
+
+/* Add the click effect */
+.toggle-button:active {
+  @apply transform translate-y-1 border shadow-sm shadow-orange-400; /* Move down when pressed */
+}
 </style>
