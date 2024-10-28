@@ -15,6 +15,10 @@ export interface ICricketer {
     | 'None';
 }
 
+export interface IStoredCricketer extends ICricketer {
+  selectedAt: string | Date;
+}
+
 export interface IStoredId {
   id: string;
   selectedAt: string | Date;

@@ -4,7 +4,9 @@
   <section class="container mx-auto my-16">
     <div>
       <h3 class="text-xl font-semibold">Available Players</h3>
-      <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 my-6 pb-5 border-b border-gray-300 text-sm">
+      <div
+        class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 my-6 pb-5 border-b border-gray-300 text-sm"
+      >
         <!-- Filter by Country -->
         <div class="flex items-center gap-4">
           <label class="text-lg font-semibold" for="countries"
@@ -117,6 +119,8 @@
         />
       </div>
     </div>
+
+    <Selected :selectedIds="storedIds" />
   </section>
 </template>
 
@@ -124,6 +128,8 @@
 import { computed, defineComponent, ref, type PropType } from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
+import Selected from './Selected.vue';
+import { getFromLocalStorage } from '@/utilities/localStorage';
 
 const selectedCountry = ref<string>('');
 const selectedType = ref<string>('');
@@ -171,6 +177,8 @@ const filteredCricketers = computed(() => {
   return result;
 });
 
+const storedIds = getFromLocalStorage('selected-cricketers');
+
 export default defineComponent({
   data() {
     return {
@@ -182,6 +190,7 @@ export default defineComponent({
       setCountry,
       setType,
       setSortBy,
+      storedIds,
     };
   },
   props: {
@@ -192,6 +201,7 @@ export default defineComponent({
   },
   components: {
     Cricketer,
+    Selected,
   },
 });
 </script>

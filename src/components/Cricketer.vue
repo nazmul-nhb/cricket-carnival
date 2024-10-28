@@ -21,7 +21,7 @@
     <div class="flex items-center justify-between gap-4 flex-wrap flex-1">
       <h4 class="flex items-center gap-1"><TbCricket />{{ battingStyle }}</h4>
       <h4 class="flex items-center gap-1">
-        <BiCricketBall /> {{ bowlingStyle }}
+        <BiSolidCricketBall /> {{ bowlingStyle }}
       </h4>
     </div>
     <div class="flex items-center justify-between gap-4 flex-wrap">
@@ -45,7 +45,7 @@
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
 import { defineComponent, ref, type PropType } from 'vue';
-import { BiCricketBall } from 'vue3-icons/bi';
+import { BiSolidCricketBall } from 'vue3-icons/bi';
 import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
@@ -64,7 +64,7 @@ export default defineComponent({
     },
   },
   components: {
-    BiCricketBall,
+    BiSolidCricketBall,
     TbCricket,
     GiPriceTag,
     FaRankingStar,

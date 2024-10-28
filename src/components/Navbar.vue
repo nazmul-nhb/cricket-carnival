@@ -15,7 +15,7 @@
           <button>Schedule</button>
         </div>
         <div class="flex items-center gap-2">
-          <span>Coins: {{ coins }}</span>
+          <span>{{ coins }}</span>
           <img :src="coin" alt="Coin" />
         </div>
       </div>
