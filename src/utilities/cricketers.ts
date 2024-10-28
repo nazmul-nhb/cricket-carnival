@@ -9,13 +9,30 @@ import pakistan from '../assets/logos/pakistan.png';
 import southAfrica from '../assets/logos/south-africa.png';
 import sriLanka from '../assets/logos/sri-lanka.png';
 import westIndies from '../assets/logos/west-indies.png';
+import allRounder from '../assets/cricketers/all-round.jpg';
+import astle from '../assets/cricketers/astle.jpg';
+import batsman from '../assets/cricketers/batsman.jpg';
+import bowler from '../assets/cricketers/bowler.jpg';
+import ferguson from '../assets/cricketers/ferguson.jpg';
+import graemeSmith from '../assets/cricketers/graeme-smith.jpeg';
+import jamieson from '../assets/cricketers/jamieson.jpg';
+import keeper from '../assets/cricketers/keeper.png';
+import lara from '../assets/cricketers/lara.jpg';
+import latham from '../assets/cricketers/latham.jpg';
+import McCullum from '../assets/cricketers/McCullum.jpg';
+import muralitharan from '../assets/cricketers/muralitharan.jpg';
+import oram from '../assets/cricketers/oram.jpg';
+import richardson from '../assets/cricketers/richardson.jpg';
+import shaneWarne from '../assets/cricketers/shane-warne.jpg';
+import somerville from '../assets/cricketers/somerville.jpg';
+import tendulkar from '../assets/cricketers/tendulkar.jpg';
+import vettori from '../assets/cricketers/vettori.jpg';
 
 export const cricketers: ICricketer[] = [
   {
     id: 'nz104wkt',
     name: 'Brendon McCullum',
-    image:
-      'https://upload.wikimedia.org/wikipedia/en/3/3f/Brendon_McCullum_2015.jpg',
+    image: McCullum,
     country: 'New Zealand',
     price: 600000,
     rating: 90,
@@ -26,7 +43,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz107bat',
     name: 'Nathan Astle',
-    image: 'https://upload.wikimedia.org/wikipedia/en/6/63/Nathan_Astle.jpg',
+    image: astle,
     country: 'New Zealand',
     price: 480000,
     rating: 82,
@@ -37,7 +54,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz108all',
     name: 'Daniel Vettori',
-    image: 'https://upload.wikimedia.org/wikipedia/en/5/5f/Daniel_Vettori.jpg',
+    image: vettori,
     country: 'New Zealand',
     price: 500000,
     rating: 87,
@@ -46,21 +63,20 @@ export const cricketers: ICricketer[] = [
     bowlingStyle: 'Left-Arm-Spin',
   },
   {
-    id: 'nz109all',
-    name: 'Daniel Vettori',
-    image: 'https://upload.wikimedia.org/wikipedia/en/1/1e/Sam_Smith.png',
-    country: 'New Zealand',
+    id: 'sa106bat',
+    name: 'Graeme Smith',
+    image: graemeSmith,
+    country: 'South Africa',
     price: 420000,
     rating: 80,
-    type: 'All-Rounder',
-    battingStyle: 'Right-Hand-Bat',
-    bowlingStyle: 'Right-Arm-Pace',
+    type: 'Batsman',
+    battingStyle: 'Left-Hand-Bat',
+    bowlingStyle: 'None',
   },
   {
     id: 'nz110bwl',
     name: 'Kyle Jamieson',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d0/Kyle_Jamieson_2020.jpg',
+    image: jamieson,
     country: 'New Zealand',
     price: 530000,
     rating: 84,
@@ -71,8 +87,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz111bwl',
     name: 'Lockie Ferguson',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/7/76/Lockie_Ferguson_2019.jpg',
+    image: ferguson,
     country: 'New Zealand',
     price: 560000,
     rating: 85,
@@ -83,8 +98,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz112bwl',
     name: 'Will Somerville',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/e/e0/Will_Somerville_2016.jpg',
+    image: somerville,
     country: 'New Zealand',
     price: 470000,
     rating: 78,
@@ -95,8 +109,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz113wkt',
     name: 'Tom Latham',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d3/Tom_Latham_2017.jpg',
+    image: latham,
     country: 'New Zealand',
     price: 590000,
     rating: 88,
@@ -107,7 +120,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz114bat',
     name: 'Mark Richardson',
-    image: 'https://upload.wikimedia.org/wikipedia/en/1/15/Mark_Richardson.jpg',
+    image: richardson,
     country: 'New Zealand',
     price: 460000,
     rating: 81,
@@ -118,7 +131,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz115all',
     name: 'Jacob Oram',
-    image: 'https://upload.wikimedia.org/wikipedia/en/b/b9/Ross_Taylor.jpg',
+    image: oram,
     country: 'New Zealand',
     price: 550000,
     rating: 89,
@@ -129,7 +142,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind100bat',
     name: 'Sachin Tendulkar',
-    image: 'https://example.com/images/sachin_tendulkar.jpg',
+    image: tendulkar,
     country: 'India',
     price: 500000,
     rating: 98,
@@ -140,7 +153,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi100bat',
     name: 'Brian Lara',
-    image: 'https://example.com/images/brian_lara.jpg',
+    image: lara,
     country: 'West Indies',
     price: 450000,
     rating: 96,
@@ -151,7 +164,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus100bwl',
     name: 'Shane Warne',
-    image: 'https://example.com/images/shane_warne.jpg',
+    image: shaneWarne,
     country: 'Australia',
     price: 400000,
     rating: 95,
@@ -162,7 +175,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sl100bwl',
     name: 'Muttiah Muralitharan',
-    image: 'https://example.com/images/muttiah_muralitharan.jpg',
+    image: muralitharan,
     country: 'Sri Lanka',
     price: 450000,
     rating: 97,
@@ -173,7 +186,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak100bwl',
     name: 'Wasim Akram',
-    image: 'https://example.com/images/wasim_akram.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 500000,
     rating: 94,
@@ -184,7 +197,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus101bat',
     name: 'Ricky Ponting',
-    image: 'https://example.com/images/ricky_ponting.jpg',
+    image: batsman,
     country: 'Australia',
     price: 475000,
     rating: 95,
@@ -195,7 +208,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sa100all',
     name: 'Jacques Kallis',
-    image: 'https://example.com/images/jacques_kallis.jpg',
+    image: allRounder,
     country: 'South Africa',
     price: 525000,
     rating: 97,
@@ -206,7 +219,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind101wkt',
     name: 'MS Dhoni',
-    image: 'https://example.com/images/ms_dhoni.jpg',
+    image: keeper,
     country: 'India',
     price: 470000,
     rating: 95,
@@ -217,7 +230,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind102bat',
     name: 'Virender Sehwag',
-    image: 'https://example.com/images/virender_sehwag.jpg',
+    image: batsman,
     country: 'India',
     price: 460000,
     rating: 93,
@@ -228,7 +241,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sl101wkt',
     name: 'Kumar Sangakkara',
-    image: 'https://example.com/images/kumar_sangakkara.jpg',
+    image: keeper,
     country: 'Sri Lanka',
     price: 460000,
     rating: 94,
@@ -239,7 +252,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind103bat',
     name: 'Rahul Dravid',
-    image: 'https://example.com/images/rahul_dravid.jpg',
+    image: batsman,
     country: 'India',
     price: 450000,
     rating: 93,
@@ -250,7 +263,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus102bat',
     name: 'Adam Gilchrist',
-    image: 'https://example.com/images/adam_gilchrist.jpg',
+    image: keeper,
     country: 'Australia',
     price: 440000,
     rating: 92,
@@ -261,7 +274,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi101all',
     name: 'Chris Gayle',
-    image: 'https://example.com/images/chris_gayle.jpg',
+    image: allRounder,
     country: 'West Indies',
     price: 450000,
     rating: 91,
@@ -272,7 +285,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sa101bat',
     name: 'AB de-Villiers',
-    image: 'https://example.com/images/ab_de_villiers.jpg',
+    image: batsman,
     country: 'South Africa',
     price: 460000,
     rating: 95,
@@ -283,7 +296,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus103bat',
     name: 'Michael Clarke',
-    image: 'https://example.com/images/michael_clarke.jpg',
+    image: batsman,
     country: 'Australia',
     price: 430000,
     rating: 90,
@@ -294,7 +307,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind104bat',
     name: 'Sourav Ganguly',
-    image: 'https://example.com/images/sourav_ganguly.jpg',
+    image: batsman,
     country: 'India',
     price: 420000,
     rating: 91,
@@ -305,7 +318,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz105bat',
     name: 'Glen Turner',
-    image: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Glen_Turner.jpg',
+    image: batsman,
     country: 'New Zealand',
     price: 450000,
     rating: 85,
@@ -316,7 +329,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus104bwl',
     name: 'Glenn McGrath',
-    image: 'https://example.com/images/glenn_mcgrath.jpg',
+    image: bowler,
     country: 'Australia',
     price: 460000,
     rating: 93,
@@ -327,7 +340,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind105all',
     name: 'Yuvraj Singh',
-    image: 'https://example.com/images/yuvraj_singh.jpg',
+    image: allRounder,
     country: 'India',
     price: 450000,
     rating: 92,
@@ -338,7 +351,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak101bat',
     name: 'Inzamam-ul Haq',
-    image: 'https://example.com/images/inzamam_ul_haq.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 420000,
     rating: 91,
@@ -349,7 +362,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz100bat',
     name: 'Stephen Fleming',
-    image: 'https://example.com/images/stephen_fleming.jpg',
+    image: batsman,
     country: 'New Zealand',
     price: 410000,
     rating: 90,
@@ -360,7 +373,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak102bwl',
     name: 'Shoaib Akhtar',
-    image: 'https://example.com/images/shoaib_akhtar.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 400000,
     rating: 92,
@@ -371,7 +384,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sl102all',
     name: 'Sanath Jayasuriya',
-    image: 'https://example.com/images/sanath_jayasuriya.jpg',
+    image: allRounder,
     country: 'Sri Lanka',
     price: 420000,
     rating: 90,
@@ -382,7 +395,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sl103bat',
     name: 'Mahela Jayawardene',
-    image: 'https://example.com/images/mahela_jayawardene.jpg',
+    image: batsman,
     country: 'Sri Lanka',
     price: 410000,
     rating: 89,
@@ -393,7 +406,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus105bwl',
     name: 'Brett Lee',
-    image: 'https://example.com/images/brett_lee.jpg',
+    image: bowler,
     country: 'Australia',
     price: 440000,
     rating: 92,
@@ -404,7 +417,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'eng100bat',
     name: 'Kevin Pietersen',
-    image: 'https://example.com/images/kevin_pietersen.jpg',
+    image: batsman,
     country: 'England',
     price: 430000,
     rating: 90,
@@ -415,7 +428,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind106bat',
     name: 'VVS Laxman',
-    image: 'https://example.com/images/vvs_laxman.jpg',
+    image: batsman,
     country: 'India',
     price: 410000,
     rating: 89,
@@ -426,7 +439,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi102all',
     name: 'Andre Russell',
-    image: 'https://example.com/images/andre_russell.jpg',
+    image: allRounder,
     country: 'West Indies',
     price: 460000,
     rating: 91,
@@ -437,7 +450,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz101bat',
     name: 'Kane Williamson',
-    image: 'https://example.com/images/kane_williamson.jpg',
+    image: batsman,
     country: 'New Zealand',
     price: 490000,
     rating: 94,
@@ -448,7 +461,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus106bat',
     name: 'Steve Smith',
-    image: 'https://example.com/images/steve_smith.jpg',
+    image: batsman,
     country: 'Australia',
     price: 470000,
     rating: 94,
@@ -459,7 +472,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi103bwl',
     name: 'Courtney Walsh',
-    image: 'https://example.com/images/courtney_walsh.jpg',
+    image: bowler,
     country: 'West Indies',
     price: 430000,
     rating: 89,
@@ -470,7 +483,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'eng101all',
     name: 'Ben Stokes',
-    image: 'https://example.com/images/ben_stokes.jpg',
+    image: allRounder,
     country: 'England',
     price: 520000,
     rating: 95,
@@ -481,7 +494,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sa102bat',
     name: 'Hashim Amla',
-    image: 'https://example.com/images/hashim_amla.jpg',
+    image: batsman,
     country: 'South Africa',
     price: 410000,
     rating: 90,
@@ -492,7 +505,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak103bat',
     name: 'Mohammad Yousuf',
-    image: 'https://example.com/images/mohammad_yousuf.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 410000,
     rating: 89,
@@ -503,7 +516,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz102bat',
     name: 'Ross Taylor',
-    image: 'https://example.com/images/ross_taylor.jpg',
+    image: batsman,
     country: 'New Zealand',
     price: 400000,
     rating: 89,
@@ -514,7 +527,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind107bat',
     name: 'Rohit Sharma',
-    image: 'https://example.com/images/rohit_sharma.jpg',
+    image: batsman,
     country: 'India',
     price: 490000,
     rating: 94,
@@ -525,7 +538,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus107all',
     name: 'Mitchell Marsh',
-    image: 'https://example.com/images/mitchell_marsh.jpg',
+    image: allRounder,
     country: 'Australia',
     price: 450000,
     rating: 89,
@@ -536,7 +549,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi104bwl',
     name: 'Joel Garner',
-    image: 'https://example.com/images/joel_garner.jpg',
+    image: bowler,
     country: 'West Indies',
     price: 430000,
     rating: 91,
@@ -547,7 +560,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'eng102wkt',
     name: 'Jos Buttler',
-    image: 'https://example.com/images/jos_buttler.jpg',
+    image: keeper,
     country: 'England',
     price: 470000,
     rating: 93,
@@ -558,7 +571,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind108bat',
     name: 'Shikhar Dhawan',
-    image: 'https://example.com/images/shikhar_dhawan.jpg',
+    image: batsman,
     country: 'India',
     price: 460000,
     rating: 90,
@@ -569,7 +582,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus108bat',
     name: 'David Warner',
-    image: 'https://example.com/images/david_warner.jpg',
+    image: batsman,
     country: 'Australia',
     price: 490000,
     rating: 92,
@@ -580,7 +593,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind109all',
     name: 'Hardik Pandya',
-    image: 'https://example.com/images/hardik_pandya.jpg',
+    image: allRounder,
     country: 'India',
     price: 450000,
     rating: 88,
@@ -591,7 +604,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz103bwl',
     name: 'Trent Boult',
-    image: 'https://example.com/images/trent_boult.jpg',
+    image: bowler,
     country: 'New Zealand',
     price: 460000,
     rating: 90,
@@ -602,7 +615,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind110bwl',
     name: 'Jasprit Bumrah',
-    image: 'https://example.com/images/jasprit_bumrah.jpg',
+    image: bowler,
     country: 'India',
     price: 480000,
     rating: 93,
@@ -613,8 +626,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'nz106bat',
     name: 'Martin Guptill',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/d/d2/Martin_Guptill_2015.jpg',
+    image: batsman,
     country: 'New Zealand',
     price: 550000,
     rating: 88,
@@ -625,7 +637,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'aus109wkt',
     name: 'Matthew Wade',
-    image: 'https://example.com/images/matthew_wade.jpg',
+    image: keeper,
     country: 'Australia',
     price: 410000,
     rating: 89,
@@ -636,7 +648,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'wi105all',
     name: 'Dwayne Bravo',
-    image: 'https://example.com/images/dwayne_bravo.jpg',
+    image: allRounder,
     country: 'West Indies',
     price: 430000,
     rating: 91,
@@ -647,7 +659,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'eng103bat',
     name: 'Alastair Cook',
-    image: 'https://example.com/images/alastair_cook.jpg',
+    image: batsman,
     country: 'England',
     price: 430000,
     rating: 89,
@@ -658,7 +670,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sa103bwl',
     name: 'Dale Steyn',
-    image: 'https://example.com/images/dale_steyn.jpg',
+    image: bowler,
     country: 'South Africa',
     price: 450000,
     rating: 93,
@@ -669,7 +681,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ind111bat',
     name: 'KL Rahul',
-    image: 'https://example.com/images/kl_rahul.jpg',
+    image: batsman,
     country: 'India',
     price: 470000,
     rating: 92,
@@ -680,7 +692,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'sa104all',
     name: 'Chris Morris',
-    image: 'https://example.com/images/chris_morris.jpg',
+    image: allRounder,
     country: 'South Africa',
     price: 440000,
     rating: 88,
@@ -691,7 +703,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak104wkt',
     name: 'Kamran Akmal',
-    image: 'https://example.com/images/kamran_akmal.jpg',
+    image: keeper,
     country: 'Pakistan',
     price: 400000,
     rating: 85,
@@ -702,7 +714,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban201bat',
     name: 'Tamim Iqbal',
-    image: 'https://example.com/images/tamim_iqbal.jpg',
+    image: batsman,
     country: 'Bangladesh',
     price: 380000,
     rating: 88,
@@ -713,7 +725,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban202all',
     name: 'Shakib Al-Hasan',
-    image: 'https://example.com/images/shakib_al_hasan.jpg',
+    image: allRounder,
     country: 'Bangladesh',
     price: 450000,
     rating: 93,
@@ -724,7 +736,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban203bat',
     name: 'Mushfiqur Rahim',
-    image: 'https://example.com/images/mushfiqur_rahim.jpg',
+    image: batsman,
     country: 'Bangladesh',
     price: 400000,
     rating: 87,
@@ -735,7 +747,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban204bwl',
     name: 'Mustafizur Rahman',
-    image: 'https://example.com/images/mustafizur_rahman.jpg',
+    image: bowler,
     country: 'Bangladesh',
     price: 420000,
     rating: 86,
@@ -746,7 +758,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban205bwl',
     name: 'Taskin Ahmed',
-    image: 'https://example.com/images/taskin_ahmed.jpg',
+    image: bowler,
     country: 'Bangladesh',
     price: 410000,
     rating: 84,
@@ -757,7 +769,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban206all',
     name: 'Mahmudullah',
-    image: 'https://example.com/images/mahmudullah.jpg',
+    image: allRounder,
     country: 'Bangladesh',
     price: 370000,
     rating: 82,
@@ -768,7 +780,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban207wkt',
     name: 'Liton Das',
-    image: 'https://example.com/images/liton_das.jpg',
+    image: keeper,
     country: 'Bangladesh',
     price: 390000,
     rating: 83,
@@ -779,7 +791,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban208bat',
     name: 'Soumya Sarkar',
-    image: 'https://example.com/images/soumya_sarkar.jpg',
+    image: batsman,
     country: 'Bangladesh',
     price: 360000,
     rating: 80,
@@ -790,7 +802,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg201all',
     name: 'Mohammad Nabi',
-    image: 'https://example.com/images/mohammad_nabi.jpg',
+    image: allRounder,
     country: 'Afghanistan',
     price: 410000,
     rating: 88,
@@ -801,7 +813,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg202bat',
     name: 'Hazratullah Zazai',
-    image: 'https://example.com/images/hazratullah_zazai.jpg',
+    image: batsman,
     country: 'Afghanistan',
     price: 390000,
     rating: 82,
@@ -812,7 +824,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg203bwl',
     name: 'Rashid Khan',
-    image: 'https://example.com/images/rashid_khan.jpg',
+    image: bowler,
     country: 'Afghanistan',
     price: 450000,
     rating: 93,
@@ -823,7 +835,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg204bat',
     name: 'Asghar Afghan',
-    image: 'https://example.com/images/asghar_afghan.jpg',
+    image: batsman,
     country: 'Afghanistan',
     price: 360000,
     rating: 81,
@@ -834,7 +846,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg205all',
     name: 'Gulbadin Naib',
-    image: 'https://example.com/images/gulbadin_naib.jpg',
+    image: allRounder,
     country: 'Afghanistan',
     price: 370000,
     rating: 82,
@@ -845,7 +857,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg206wkt',
     name: 'Mohammad Shahzad',
-    image: 'https://example.com/images/mohammad_shahzad.jpg',
+    image: keeper,
     country: 'Afghanistan',
     price: 380000,
     rating: 83,
@@ -856,7 +868,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg207bat',
     name: 'Rahmat Shah',
-    image: 'https://example.com/images/rahmat_shah.jpg',
+    image: batsman,
     country: 'Afghanistan',
     price: 360000,
     rating: 80,
@@ -867,7 +879,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg208bwl',
     name: 'Mujeeb-ur Rahman',
-    image: 'https://example.com/images/mujeeb_ur_rahman.jpg',
+    image: bowler,
     country: 'Afghanistan',
     price: 410000,
     rating: 87,
@@ -878,7 +890,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban209bat',
     name: 'Imrul Kayes',
-    image: 'https://example.com/images/imrul_kayes.jpg',
+    image: batsman,
     country: 'Bangladesh',
     price: 350000,
     rating: 79,
@@ -889,7 +901,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'ban210bwl',
     name: 'Rubel Hossain',
-    image: 'https://example.com/images/rubel_hossain.jpg',
+    image: bowler,
     country: 'Bangladesh',
     price: 400000,
     rating: 83,
@@ -900,7 +912,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg209all',
     name: 'Karim Janat',
-    image: 'https://example.com/images/karim_janat.jpg',
+    image: allRounder,
     country: 'Afghanistan',
     price: 380000,
     rating: 82,
@@ -911,7 +923,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'afg210bat',
     name: 'Hashmatullah Shahidi',
-    image: 'https://example.com/images/hashmatullah_shahidi.jpg',
+    image: batsman,
     country: 'Afghanistan',
     price: 370000,
     rating: 81,
@@ -922,7 +934,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak105bat',
     name: 'Babar Azam',
-    image: 'https://example.com/images/babar_azam.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 500000,
     rating: 94,
@@ -933,7 +945,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak106all',
     name: 'Shadab Khan',
-    image: 'https://example.com/images/shadab_khan.jpg',
+    image: allRounder,
     country: 'Pakistan',
     price: 450000,
     rating: 87,
@@ -944,7 +956,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak107wkt',
     name: 'Mohammad Rizwan',
-    image: 'https://example.com/images/mohammad_rizwan.jpg',
+    image: keeper,
     country: 'Pakistan',
     price: 480000,
     rating: 91,
@@ -955,7 +967,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak108bwl',
     name: 'Shaheen Afridi',
-    image: 'https://example.com/images/shaheen_afridi.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 470000,
     rating: 89,
@@ -966,7 +978,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak109bat',
     name: 'Fakhar Zaman',
-    image: 'https://example.com/images/fakhar_zaman.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 370000,
     rating: 84,
@@ -977,7 +989,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak110all',
     name: 'Imad Wasim',
-    image: 'https://example.com/images/imad_wasim.jpg',
+    image: allRounder,
     country: 'Pakistan',
     price: 390000,
     rating: 85,
@@ -988,7 +1000,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak111bwl',
     name: 'Hasan Ali',
-    image: 'https://example.com/images/hasan_ali.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 380000,
     rating: 83,
@@ -999,7 +1011,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak112bat',
     name: 'Shoaib Malik',
-    image: 'https://example.com/images/shoaib_malik.jpg',
+    image: allRounder,
     country: 'Pakistan',
     price: 370000,
     rating: 82,
@@ -1010,7 +1022,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak113wkt',
     name: 'Sarfaraz Ahmed',
-    image: 'https://example.com/images/sarfaraz_ahmed.jpg',
+    image: keeper,
     country: 'Pakistan',
     price: 350000,
     rating: 80,
@@ -1021,7 +1033,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak114bwl',
     name: 'Wahab Riaz',
-    image: 'https://example.com/images/wahab_riaz.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 370000,
     rating: 81,
@@ -1032,7 +1044,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak115bat',
     name: 'Asif Ali',
-    image: 'https://example.com/images/asif_ali.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 320000,
     rating: 77,
@@ -1043,7 +1055,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak116bwl',
     name: 'Mohammad Hasnain',
-    image: 'https://example.com/images/mohammad_hasnain.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 340000,
     rating: 79,
@@ -1054,7 +1066,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak117bat',
     name: 'Haider Ali',
-    image: 'https://example.com/images/haider_ali.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 310000,
     rating: 76,
@@ -1065,7 +1077,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak118all',
     name: 'Mohammad Nawaz',
-    image: 'https://example.com/images/mohammad_nawaz.jpg',
+    image: allRounder,
     country: 'Pakistan',
     price: 360000,
     rating: 80,
@@ -1076,7 +1088,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak119bwl',
     name: 'Yasir Shah',
-    image: 'https://example.com/images/yasir_shah.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 350000,
     rating: 78,
@@ -1087,7 +1099,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak120all',
     name: 'Faheem Ashraf',
-    image: 'https://example.com/images/faheem_ashraf.jpg',
+    image: allRounder,
     country: 'Pakistan',
     price: 340000,
     rating: 78,
@@ -1098,7 +1110,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak121bat',
     name: 'Imam-ul-Haq',
-    image: 'https://example.com/images/imam_ul_haq.jpg',
+    image: batsman,
     country: 'Pakistan',
     price: 380000,
     rating: 82,
@@ -1109,7 +1121,7 @@ export const cricketers: ICricketer[] = [
   {
     id: 'pak122bwl',
     name: 'Mohammad Asif',
-    image: 'https://example.com/images/kamran_akmal.jpg',
+    image: bowler,
     country: 'Pakistan',
     price: 330000,
     rating: 76,

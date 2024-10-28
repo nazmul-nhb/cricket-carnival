@@ -1,7 +1,10 @@
 <template>
   <div
-    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-4 hover:scale-105 hover:bg-gray-200/70 transition-all duration-500"
+    class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-3 hover:scale-105 hover:bg-gray-200/70 transition-all duration-500"
   >
+    <figure>
+      <img class="rounded-lg" :src="image" :alt="name" />
+    </figure>
     <h2 class="text-lg font-bold flex items-center gap-1">
       <FaUser /> {{ name }}
     </h2>
@@ -12,7 +15,7 @@
       </div>
       <h4 class="text-gray-700">{{ type }}</h4>
     </div>
-    <h3 class="font-semibold !mt-8 flex items-center gap-1">
+    <h3 class="font-semibold !mt-3 flex items-center gap-1">
       <FaRankingStar /> Rating: {{ rating }}
     </h3>
     <div class="flex items-center justify-between gap-4 flex-wrap flex-1">
@@ -72,6 +75,7 @@ export default defineComponent({
     const {
       id,
       name,
+      image,
       country,
       type,
       rating,
@@ -107,6 +111,7 @@ export default defineComponent({
     return {
       name,
       country,
+      image,
       type,
       rating,
       battingStyle,
