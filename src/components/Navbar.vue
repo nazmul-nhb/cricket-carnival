@@ -24,8 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import type { PropType } from 'vue';
+import { defineComponent, type PropType } from 'vue';
 import logo from '../assets/icons/logo.svg';
 import coin from '../assets/icons/coin.svg';
 

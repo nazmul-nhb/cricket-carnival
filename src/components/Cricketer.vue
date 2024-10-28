@@ -30,6 +30,7 @@
         @mouseleave="hover = false"
         @mousedown="pressed = true"
         @mouseup="pressed = false"
+        @click="choosePlayer"
       >
         Choose Player
       </button>
@@ -40,16 +41,21 @@
 <script lang="ts">
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, type PropType } from 'vue';
 import { BiCricketBall } from 'vue3-icons/bi';
 import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
+import { toast } from 'vue3-toastify';
 
 export default defineComponent({
   props: {
     cricketer: {
       type: Object as () => ICricketer,
+      required: true,
+    },
+    coins: {
+      type: Number as PropType<number>,
       required: true,
     },
   },
@@ -60,14 +66,38 @@ export default defineComponent({
     FaRankingStar,
     FaUser,
   },
-  setup(props) {
-    const { name, country, type, rating, battingStyle, bowlingStyle, price } =
-      props.cricketer;
+  emits: ['update-coins'],
+  setup(props, { emit }) {
+    const {
+      id,
+      name,
+      country,
+      type,
+      rating,
+      battingStyle,
+      bowlingStyle,
+      price,
+    } = props.cricketer;
+
+    const bought: string[] = [];
 
     const logo = logos[country];
 
     const hover = ref(false);
     const pressed = ref(false);
+
+    const choosePlayer = () => {
+      if (props.coins >= price) {
+        if (bought.includes(id)) {
+          return toast.warn(`${name} is already bought!`);
+        }
+        emit('update-coins', price, false);
+        bought.push(id);
+        toast.success(`${name} Added!`);
+      } else {
+        toast.error(`Not enough coins!`);
+      }
+    };
 
     return {
       name,
@@ -80,6 +110,7 @@ export default defineComponent({
       logo,
       hover,
       pressed,
+      choosePlayer,
     };
   },
 });

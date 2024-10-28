@@ -26,7 +26,7 @@ export default defineComponent({
   emits: ['update-coins'],
   methods: {
     addCoins() {
-      this.$emit('update-coins', 1000000);
+      this.$emit('update-coins', 1000000, true);
     },
   },
 });

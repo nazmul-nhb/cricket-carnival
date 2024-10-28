@@ -36,7 +36,9 @@
         <Cricketer
           v-for="cricketer in countrySpecific"
           :key="cricketer.id"
+          :coins="coins"
           :cricketer="cricketer"
+          @update-coins="$emit('update-coins', $event)"
         />
       </div>
     </div>
@@ -44,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref, type PropType } from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 
@@ -64,6 +66,12 @@ const countrySpecific = computed(() => {
 export default defineComponent({
   data() {
     return { cricketers, countrySpecific, selectedCountry };
+  },
+  props: {
+    coins: {
+      type: Number as PropType<number>,
+      required: true,
+    },
   },
   methods: {
     setCountry: (country: string) => {
