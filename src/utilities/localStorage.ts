@@ -3,7 +3,7 @@ export const getItemFromStorage = (key: string): string[] => {
   return JSON.parse(items || '[]') as string[];
 };
 
-export const setItemToStorage = (
+export const saveItemToStorage = (
   key: string,
   item: string,
 ): { success: boolean } => {

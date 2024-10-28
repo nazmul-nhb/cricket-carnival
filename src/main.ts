@@ -8,8 +8,8 @@ const toastOptions: ToastContainerOptions = {
   autoClose: 2500,
   closeButton: false,
   closeOnClick: true,
-  hideProgressBar: true,
-  transition: 'zoom',
+  hideProgressBar: false,
+  transition: 'bounce',
   position: 'top-center',
   theme: 'dark',
 };

@@ -13,7 +13,7 @@ const updateCoins = (amount: number, add: boolean) => {
       return toast.warn('Reached maximum coin limit!');
     }
     coins.value += amount;
-    toast.success(`${amount} coins added!`);
+    toast.success(`You have claimed ${amount} coins!`);
   } else {
     if (coins.value < amount) {
       return toast.warn('Not enough coins!');

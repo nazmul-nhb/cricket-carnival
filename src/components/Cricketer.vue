@@ -47,6 +47,7 @@ import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
 import { toast } from 'vue3-toastify';
+import { saveItemToStorage } from '@/utilities/localStorage';
 
 export default defineComponent({
   props: {
@@ -79,8 +80,6 @@ export default defineComponent({
       price,
     } = props.cricketer;
 
-    const bought: string[] = [];
-
     const logo = logos[country];
 
     const hover = ref(false);
@@ -88,14 +87,17 @@ export default defineComponent({
 
     const choosePlayer = () => {
       if (props.coins >= price) {
-        if (bought.includes(id)) {
-          return toast.warn(`${name} is already bought!`);
+        const result = saveItemToStorage('selected', id);
+
+        if (!result.success) {
+          return toast.warn(
+            `${name.split(' ')[1] || name} is already in your team!`,
+          );
         }
         emit('update-coins', price, false);
-        bought.push(id);
-        toast.success(`${name} Added!`);
+        toast.success(`You have selected ${name.split(' ')[1] || name}!`);
       } else {
-        toast.error(`Not enough coins!`);
+        toast.error(`Insufficient Balance!`);
       }
     };
 
