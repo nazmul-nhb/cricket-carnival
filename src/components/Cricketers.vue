@@ -2,7 +2,7 @@
   <!-- <h3>Total {{ cricketers.length }}</h3>
   <h3 v-if="selectedCountry !== ''" >{{selectedCountry}} {{ countrySpecific.length }}</h3> -->
   <section class="container mx-auto my-16 min-h-[50vh]">
-    <div class="flex justify-end gap-4">
+    <div class="flex justify-end gap-4 mb-4">
       <button
         class="toggle-button"
         :class="{ 'bg-orange-300': !selectedView }"
@@ -15,7 +15,7 @@
         :class="{ 'bg-orange-300': selectedView }"
         @click="toggleView(true)"
       >
-        Selected({{ selectedCount }})
+        Selected ({{ selectedCount }})
       </button>
     </div>
 
@@ -28,13 +28,13 @@
 
     <!-- Available Players -->
     <section v-if="!loading && !selectedView">
-      <h3 class="text-xl font-semibold">Available Players</h3>
+      <h3 class="text-xl font-semibold">Available Players ({{ filteredCricketers.length }})</h3>
       <div
-        class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 my-6 pb-5 border-b border-gray-300 text-sm"
+        class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-4 my-6 pb-6 border-b border-gray-300 text-sm"
       >
         <!-- Filter by Country -->
         <div class="flex items-center gap-4">
-          <label class="text-lg font-semibold" for="countries"
+          <label class="text:base lg:text-lg font-semibold" for="countries"
             >Filter by Country</label
           >
           <select
@@ -64,7 +64,7 @@
 
         <!-- Filter by Type -->
         <div class="flex items-center gap-4">
-          <label class="text-lg font-semibold" for="types"
+          <label class="text:base lg:text-lg font-semibold" for="types"
             >Filter by Type</label
           >
           <select
@@ -88,7 +88,7 @@
 
         <!-- Sort Cricketers -->
         <div class="flex items-center gap-4">
-          <label class="text-lg font-semibold" for="sort">Sort By</label>
+          <label class="text:base lg:text-lg font-semibold" for="sort">Sort By</label>
           <select
             id="sort"
             name="sort"
@@ -149,7 +149,10 @@
     </section>
 
     <!-- Selected Players -->
-    <section v-if="!loading && selectedView">
+    <section v-if="!loading && selectedView" class="space-y-4">
+      <h3 class="text-xl font-semibold">
+        Selected Players ({{ selectedCount }})
+      </h3>
       <Selected :selectedIds="storedIds" />
     </section>
   </section>
@@ -308,6 +311,6 @@ export default defineComponent({
 
 /* Add the click effect */
 .toggle-button:active {
-  @apply transform translate-y-1 border shadow-sm shadow-orange-400; /* Move down when pressed */
+  @apply bg-orange-300 transform translate-y-1 border shadow-sm shadow-orange-400; /* Move down when pressed */
 }
 </style>

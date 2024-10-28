@@ -28,6 +28,6 @@ export const formatDateTime = (date: string | Date): string => {
 		return `Yesterday ${inputDate.format("hh:mm:ss a")}`;
 	}
 
-	// For any date before yesterday, return as "Sat, Oct 23, 2024 12:50:20 am/pm"
-	return inputDate.format("ddd, MMM DD, YYYY hh:mm:ss a");
+	// For any date before yesterday, return as "Sat, Oct 23, 2024 12:50 am/pm"
+	return inputDate.format("ddd, MMM DD, YYYY hh:mm a");
 };

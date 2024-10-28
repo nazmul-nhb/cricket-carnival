@@ -15,7 +15,11 @@ export interface ICricketer {
     | 'None';
 }
 
-export interface IStoredCricketer extends ICricketer {
+export interface IStoredCricketer {
+  id: string;
+  name: string;
+  image: string;
+  type: 'Batsman' | 'Bowler' | 'All-Rounder' | 'Wicket-Keeper';
   selectedAt: string | Date;
 }
 
