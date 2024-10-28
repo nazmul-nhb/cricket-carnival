@@ -9,7 +9,7 @@ const coins = ref(0);
 // Function to handle coin updates
 const updateCoins = (amount: number) => {
   if (coins.value >= 5000000) {
-    return toast.warn('You have reached Max limit!');
+    return toast.warn('Reached maximum coin limit!');
   }
 
   coins.value += amount;
