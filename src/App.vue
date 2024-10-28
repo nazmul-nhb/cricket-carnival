@@ -28,7 +28,7 @@ const updateCoins = (amount: number, add: boolean) => {
     <Navbar :coins="coins" />
   </header>
 
-  <main class="min-h-[calc(100vh-80px)] mx-6">
+  <main class="min-h-[calc(100vh-80px)] mx-6 md:mx-18 lg:mx-12 xl:mx-16">
     <Banner @update-coins="updateCoins" />
     <Cricketers :coins="coins" @update-coins="updateCoins" />
   </main>

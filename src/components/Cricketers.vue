@@ -6,21 +6,28 @@
       <button
         class="toggle-button"
         :class="{ 'bg-orange-300': !selectedView }"
-        @click="setSelectedView(false)"
+        @click="toggleView(false)"
       >
         Available
       </button>
       <button
         class="toggle-button"
         :class="{ 'bg-orange-300': selectedView }"
-        @click="setSelectedView(true)"
+        @click="toggleView(true)"
       >
         Selected({{ selectedCount }})
       </button>
     </div>
 
+    <!-- Loading Spinner -->
+    <div v-if="loading" class="flex justify-center items-center my-8">
+      <div
+        class="animate-spin w-16 h-16 border-8 border-t-orange-500 rounded-full"
+      ></div>
+    </div>
+
     <!-- Available Players -->
-    <div v-if="!selectedView">
+    <section v-if="!loading && !selectedView">
       <h3 class="text-xl font-semibold">Available Players</h3>
       <div
         class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 my-6 pb-5 border-b border-gray-300 text-sm"
@@ -103,6 +110,8 @@
           </select>
         </div>
       </div>
+
+      <!-- Show No Cricketer -->
       <div
         v-if="!filteredCricketers.length"
         class="mb-6 mt-12 flex flex-col items-center justify-center"
@@ -127,6 +136,8 @@
           Please, Filter by Other Options!
         </p>
       </div>
+
+      <!-- Show the Cricketers Grid -->
       <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Cricketer
           v-for="cricketer in filteredCricketers"
@@ -135,17 +146,24 @@
           @player-selected="addSelectedPlayer"
         />
       </div>
-    </div>
+    </section>
 
     <!-- Selected Players -->
-    <div v-else>
+    <section v-if="!loading && selectedView">
       <Selected :selectedIds="storedIds" />
-    </div>
+    </section>
   </section>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, type PropType } from 'vue';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  type PropType,
+} from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 import Selected from './Selected.vue';
@@ -169,6 +187,21 @@ export default defineComponent({
     const selectedType = ref<string>('');
     const sortBy = ref<string>('');
     const selectedView = ref<boolean>(false);
+    const loading = ref(true);
+
+    // Set loading to false after component is mounted
+    onMounted(() => {
+      loading.value = false;
+    });
+
+    const toggleView = (view: boolean) => {
+      loading.value = true;
+      selectedView.value = view;
+
+      setTimeout(() => {
+        loading.value = false;
+      }, 500);
+    };
 
     const setCountry = (country: string) => {
       selectedCountry.value = country;
@@ -218,6 +251,7 @@ export default defineComponent({
 
     const selectedCount = computed(() => storedIds.value.length);
 
+    // Add Players to the Selected list
     const addSelectedPlayer = (id: string, price: number, name: string) => {
       if (props.coins >= price) {
         const result = saveToLocalStorage('selected-cricketers', id);
@@ -247,6 +281,8 @@ export default defineComponent({
       setCountry,
       setType,
       setSortBy,
+      toggleView,
+      loading,
       storedIds,
       selectedCount,
       addSelectedPlayer,

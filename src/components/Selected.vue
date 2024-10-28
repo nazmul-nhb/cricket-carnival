@@ -1,5 +1,7 @@
 <template>
-  <section>Selected Players</section>
+  <div class="">
+    <h3 class="text-xl font-semibold">Selected Players</h3>
+  </div>
 </template>
 
 <script lang="ts">
