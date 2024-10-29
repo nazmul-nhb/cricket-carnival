@@ -4,6 +4,7 @@ import { toast } from 'vue3-toastify';
 import Navbar from './components/Navbar.vue';
 import Banner from './components/Banner.vue';
 import Cricketers from './components/Cricketers.vue';
+import Footer from './components/Footer.vue';
 
 const coins = ref(0);
 
@@ -33,8 +34,12 @@ const updateCoins = (amount: number, add: boolean) => {
   <main class="min-h-[calc(100vh-80px)] mx-6 md:mx-18 lg:mx-12 xl:mx-16">
     <Banner @update-coins="updateCoins" />
     <Cricketers :coins="coins" @update-coins="updateCoins" />
-    <a class="add-coins inline-block sticky bottom-4 z-30" href="#add-coins">Claim More Coins</a>
+    <a class="add-coins inline-block sticky bottom-4 z-30" href="#add-coins"
+      >Claim More Coins</a
+    >
   </main>
+  <!-- Footer -->
+  <Footer />
 </template>
 
 <style scoped>
