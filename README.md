@@ -2,7 +2,7 @@
 
 ## Overview
 
-Cricket Carnival is an interactive web application built with Vue.js that allows users to create their dream cricket team by selecting players from a pool of options. The application features player selection, coin management, and various filters to enhance the user experience. This project demonstrates modern web development practices, including state management, user notifications, and responsive design.
+Cricket Carnival is an interactive web application built with `Vue.js` that allows users to create their dream cricket team by selecting players from a pool of options. The application features player selection, coin management, and various filters to enhance the user experience. This project demonstrates modern web development practices, including state management, user notifications, and responsive design.
 
 ## Live Demo
 
@@ -48,7 +48,7 @@ To run the project locally, follow these steps:
    ```
 
 4. **Open Your Browser**:
-   Navigate to `http://localhost:3000` to see the application in action.
+   Navigate to `http://localhost:5173` to see the application in action.
 
 ## Challenges & Improvements
 
@@ -56,4 +56,4 @@ This project also includes several additional features and improvements:
 
 - **Responsive Layout**: The layout for selected players adjusts to different screen sizes with a three-column layout for desktop and a single-column view for mobile.
 - **Coin Management**: Users can manage their coins effectively, ensuring they don't exceed a limit of 5,000,000 coins.
-- **User Experience Enhancements**: Floating action buttons and clear visual cues improve navigation and usability.
+- **User Experience Enhancements**: Floating action buttons to claim more coins and clear visual cues improve navigation and usability.
