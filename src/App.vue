@@ -5,8 +5,12 @@ import Navbar from './components/Navbar.vue';
 import Banner from './components/Banner.vue';
 import Cricketers from './components/Cricketers.vue';
 import Footer from './components/Footer.vue';
+import {
+  addCoinsToLocalStorage,
+  getCoinsFromLocalStorage,
+} from './utilities/localStorage';
 
-const coins = ref(0);
+const coins = ref(getCoinsFromLocalStorage());
 
 // Function to handle coin updates
 const updateCoins = (amount: number, add: boolean) => {
@@ -16,11 +20,13 @@ const updateCoins = (amount: number, add: boolean) => {
     }
     coins.value += amount;
     toast.success(`You have claimed ${amount} coins!`);
+    addCoinsToLocalStorage(coins.value);
   } else {
     if (coins.value < amount) {
       return toast.warn('Not enough coins!');
     }
     coins.value -= amount;
+    addCoinsToLocalStorage(coins.value);
   }
 };
 </script>
@@ -30,6 +36,7 @@ const updateCoins = (amount: number, add: boolean) => {
   <header>
     <Navbar :coins="coins" />
   </header>
+
   <!-- Main Contents -->
   <main class="min-h-[calc(100vh-80px)] mx-6 md:mx-18 lg:mx-12 xl:mx-16">
     <Banner @update-coins="updateCoins" />
@@ -38,6 +45,7 @@ const updateCoins = (amount: number, add: boolean) => {
       >Claim More Coins</a
     >
   </main>
+  
   <!-- Footer -->
   <Footer />
 </template>

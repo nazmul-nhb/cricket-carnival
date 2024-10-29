@@ -40,3 +40,13 @@ export const removeFromLocalStorage = (key: string, id: string): IStoRes => {
   localStorage.setItem(key, JSON.stringify(updatedItems));
   return { success: true };
 };
+
+export const getCoinsFromLocalStorage = (): number => {
+  const storedCoins = localStorage.getItem('carnival-coins');
+
+  return JSON.parse(storedCoins || '0');
+};
+
+export const addCoinsToLocalStorage = (coins: number) => {
+  localStorage.setItem('carnival-coins', JSON.stringify(coins));
+};

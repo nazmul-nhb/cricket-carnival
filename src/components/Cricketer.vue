@@ -2,7 +2,7 @@
   <div
     class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-3 hover:scale-105 hover:bg-gray-200/70 transition-all duration-500"
   >
-  <!-- Image and Name -->
+    <!-- Image and Name -->
     <figure>
       <img class="rounded-lg" :src="image" :alt="name" />
     </figure>
@@ -11,7 +11,7 @@
     </h2>
 
     <!-- Country and Type -->
-    <div class="flex items-center justify-between gap-4 flex-wrap">
+    <div class="flex items-center justify-between gap-4 flex-wrap font-semibold">
       <div class="flex items-center gap-2">
         <img class="w-8" :src="logo" alt="Board Logo" />
         <h3 class="text-gray-600">{{ country }}</h3>
@@ -25,16 +25,18 @@
     </h3>
 
     <!-- Batting and/or Bowling Styles -->
-    <div class="flex items-center justify-between gap-4 flex-wrap flex-1">
-      <h4 class="flex items-center gap-1"><TbCricket />{{ battingStyle }}</h4>
+    <div class="flex items-center justify-between gap-4 flex-wrap flex-1 font-semibold">
+      <h4 class="flex items-center gap-1"><MdSportsCricket class="text-green-900" />{{ battingStyle }}</h4>
       <h4 class="flex items-center gap-1">
-        <BiSolidCricketBall /> {{ bowlingStyle }}
+        <BiSolidCricketBall class="text-red-900" /> {{ bowlingStyle }}
       </h4>
     </div>
-    
+
     <!-- Price & Button to Select Player -->
     <div class="flex items-center justify-between gap-4 flex-wrap">
-      <h4 class="flex items-center gap-1"><GiPriceTag /> ${{ price }}</h4>
+      <h4 class="flex items-center gap-1 font-semibold">
+        <FaCoins />{{ price }}
+      </h4>
       <button
         class="choose-button"
         :aria-pressed="pressed"
@@ -55,9 +57,8 @@ import { ref } from 'vue';
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
 import { BiSolidCricketBall } from 'vue3-icons/bi';
-import { TbCricket } from 'vue3-icons/tb';
-import { GiPriceTag } from 'vue3-icons/gi';
-import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
+import { MdSportsCricket } from 'vue3-icons/md';
+import { FaRankingStar, FaUser, FaCoins } from 'vue3-icons/fa6';
 
 const { cricketer } = defineProps<{ cricketer: ICricketer }>();
 

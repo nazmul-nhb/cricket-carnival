@@ -12,7 +12,7 @@ Check out the live application: [Cricket Carnival](https://cricket-carnival-nhb.
 
 - **Player Selection & Management**: Users can select players for their team while adhering to coin limitations. Selected players can be removed or added back as desired.
 - **Dynamic Filtering & Sorting**: Players can be filtered by country, type (batsman, bowler, all-rounder, wicket-keeper), and sorted by price and rating.
-- **Local Storage Integration**: Selected player IDs are stored in local storage, ensuring user selections persist between sessions. The application handles deletions from both the UI and local storage.
+- **Local Storage Integration**: Selected player IDs are stored with time in local storage, ensuring user selections persist between sessions. The application handles deletions from both the UI and local storage. Coins are also stored in local storage to keep the coins persistent for the browser.
 - **Notifications**: Integrated with Notiflix and Vue3-Toastify for user alerts and notifications to enhance the user experience.
 
 ## Technologies Used

@@ -48,14 +48,14 @@
       </div>
 
       <!-- Subscribe -->
-      <div class="md:w-1/3 text-center md:text-left space-y-2">
+      <div class="md:w-1/3 text-center md:text-right space-y-2">
         <h3 class="text-xl font-bold">Subscribe</h3>
         <p class="text-gray-200">
           Subscribe to our newsletter for the latest updates.
         </p>
 
         <form
-          class="flex flex-col items-center md:items-start gap-3 text-black"
+          class="flex flex-col items-center md:items-end gap-3 text-black"
           @submit.prevent="handleSubscribe"
         >
           <input
