@@ -84,7 +84,7 @@
   </footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { toast } from 'vue3-toastify';
 import { ref } from 'vue';
 
