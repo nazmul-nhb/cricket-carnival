@@ -155,7 +155,10 @@
       <h3 class="text-xl font-semibold">
         Selected Players ({{ selectedCount }})
       </h3>
-      <Selected :selectedIds="storedIds" />
+      <Selected
+        :selectedIds="storedIds"
+        @remove-selected="removeSelectedPlayer"
+      />
     </section>
   </section>
 </template>
@@ -168,6 +171,7 @@ import Cricketer from './Cricketer.vue';
 import Selected from './Selected.vue';
 import {
   getFromLocalStorage,
+  removeFromLocalStorage,
   saveToLocalStorage,
 } from '@/utilities/localStorage';
 
@@ -263,6 +267,19 @@ const addSelectedPlayer = (id: string, price: number, name: string) => {
   } else {
     toast.error(`Insufficient Balance!`);
   }
+};
+
+// Remove Players from the Selected list
+const removeSelectedPlayer = (id: string, name: string) => {
+  const result = removeFromLocalStorage('selected-cricketers', id);
+  
+  if (!result.success) {
+    return toast.error('Something Went Wrong!');
+  }
+
+  toast.success(`${name} is Removed!`);
+
+  storedIds.value = getFromLocalStorage('selected-cricketers');
 };
 </script>
 

@@ -29,6 +29,12 @@ export const saveToLocalStorage = (key: string, id: string): ISaveRes => {
 export const removeFromLocalStorage = (key: string, id: string): IStoRes => {
   const storedItems = getFromLocalStorage(key);
 
+  const foundItem = storedItems.find(item => item.id === id);
+
+  if (!foundItem) {
+    return { success: false };
+  }
+
   const updatedItems = storedItems.filter(stored => stored.id !== id);
 
   localStorage.setItem(key, JSON.stringify(updatedItems));
