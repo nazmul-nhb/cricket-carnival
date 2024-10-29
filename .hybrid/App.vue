@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { toast } from 'vue3-toastify';
-import Navbar from './components/Navbar.vue';
 import Banner from './components/Banner.vue';
 import Cricketers from './components/Cricketers.vue';
-
+import Navbar from './components/Navbar.vue';
+import { toast } from 'vue3-toastify';
+import { ref } from 'vue';
 const coins = ref(0);
 
 // Function to handle coin updates
@@ -25,11 +24,10 @@ const updateCoins = (amount: number, add: boolean) => {
 </script>
 
 <template>
-  <!-- Navbar -->
   <header>
     <Navbar :coins="coins" />
   </header>
-  <!-- Main Contents -->
+
   <main class="min-h-[calc(100vh-80px)] mx-6 md:mx-18 lg:mx-12 xl:mx-16">
     <Banner @update-coins="updateCoins" />
     <Cricketers :coins="coins" @update-coins="updateCoins" />

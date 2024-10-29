@@ -2,15 +2,12 @@
   <div
     class="border rounded-lg shadow-md shadow-gray-600 p-6 flex flex-col gap-3 hover:scale-105 hover:bg-gray-200/70 transition-all duration-500"
   >
-  <!-- Image and Name -->
     <figure>
       <img class="rounded-lg" :src="image" :alt="name" />
     </figure>
     <h2 class="text-lg font-bold flex items-center gap-1">
       <FaUser /> {{ name }}
     </h2>
-
-    <!-- Country and Type -->
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <div class="flex items-center gap-2">
         <img class="w-8" :src="logo" alt="Board Logo" />
@@ -18,21 +15,15 @@
       </div>
       <h4 class="text-gray-700">{{ type }}</h4>
     </div>
-
-    <!-- Rating -->
     <h3 class="font-semibold !mt-3 flex items-center gap-1">
       <FaRankingStar /> Rating: {{ rating }}
     </h3>
-
-    <!-- Batting and/or Bowling Styles -->
     <div class="flex items-center justify-between gap-4 flex-wrap flex-1">
       <h4 class="flex items-center gap-1"><TbCricket />{{ battingStyle }}</h4>
       <h4 class="flex items-center gap-1">
         <BiSolidCricketBall /> {{ bowlingStyle }}
       </h4>
     </div>
-    
-    <!-- Price & Button to Select Player -->
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <h4 class="flex items-center gap-1"><GiPriceTag /> ${{ price }}</h4>
       <button
@@ -50,41 +41,70 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script lang="ts">
 import type { ICricketer } from '@/types/interface';
 import { logos } from '@/utilities/cricketers';
+import { defineComponent, ref } from 'vue';
 import { BiSolidCricketBall } from 'vue3-icons/bi';
 import { TbCricket } from 'vue3-icons/tb';
 import { GiPriceTag } from 'vue3-icons/gi';
 import { FaRankingStar, FaUser } from 'vue3-icons/fa6';
 
-const { cricketer } = defineProps<{ cricketer: ICricketer }>();
+export default defineComponent({
+  props: {
+    cricketer: {
+      type: Object as () => ICricketer,
+      required: true,
+    },
+  },
+  components: {
+    BiSolidCricketBall,
+    TbCricket,
+    GiPriceTag,
+    FaRankingStar,
+    FaUser,
+  },
+  emits: ['player-selected'],
+  setup(props, { emit }) {
+    const {
+      id,
+      name,
+      image,
+      country,
+      type,
+      rating,
+      battingStyle,
+      bowlingStyle,
+      price,
+    } = props.cricketer;
 
-const {
-  id,
-  name,
-  image,
-  country,
-  type,
-  rating,
-  battingStyle,
-  bowlingStyle,
-  price,
-} = cricketer;
+    const logo = logos[country];
 
-const emit = defineEmits(['player-selected']);
+    const lastName = name.split(' ')[1] || name;
 
-const logo = logos[country];
+    const hover = ref(false);
+    const pressed = ref(false);
 
-const lastName = name.split(' ')[1] || name;
+    const choosePlayer = () => {
+      emit('player-selected', id, price, lastName);
+    };
 
-const hover = ref(false);
-const pressed = ref(false);
-
-const choosePlayer = () => {
-  emit('player-selected', id, price, lastName);
-};
+    return {
+      name,
+      country,
+      image,
+      type,
+      rating,
+      battingStyle,
+      bowlingStyle,
+      price,
+      logo,
+      hover,
+      pressed,
+      choosePlayer,
+    };
+  },
+});
 </script>
 
 <style scoped>

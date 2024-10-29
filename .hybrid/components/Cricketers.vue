@@ -1,4 +1,6 @@
 <template>
+  <!-- <h3>Total {{ cricketers.length }}</h3>
+  <h3 v-if="selectedCountry !== ''" >{{selectedCountry}} {{ countrySpecific.length }}</h3> -->
   <section class="container mx-auto my-16 min-h-[50vh]">
     <div class="flex justify-end gap-4 mb-4">
       <button
@@ -26,9 +28,7 @@
 
     <!-- Available Players -->
     <section v-if="!loading && !selectedView">
-      <h3 class="text-xl font-semibold">
-        Available Players ({{ filteredCricketers.length }})
-      </h3>
+      <h3 class="text-xl font-semibold">Available Players ({{ filteredCricketers.length }})</h3>
       <div
         class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-4 my-6 pb-6 border-b border-gray-300 text-sm"
       >
@@ -88,9 +88,7 @@
 
         <!-- Sort Cricketers -->
         <div class="flex items-center gap-4">
-          <label class="text:base lg:text-lg font-semibold" for="sort"
-            >Sort By</label
-          >
+          <label class="text:base lg:text-lg font-semibold" for="sort">Sort By</label>
           <select
             id="sort"
             name="sort"
@@ -160,110 +158,142 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { toast } from 'vue3-toastify';
-import { computed, onMounted, ref } from 'vue';
+<script lang="ts">
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  type PropType,
+} from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 import Selected from './Selected.vue';
+import { toast } from 'vue3-toastify';
 import {
   getFromLocalStorage,
   saveToLocalStorage,
 } from '@/utilities/localStorage';
 
-const { coins } = defineProps<{ coins: number }>();
+export default defineComponent({
+  components: { Cricketer, Selected },
+  props: {
+    coins: {
+      type: Number as PropType<number>,
+      required: true,
+    },
+  },
+  setup(props, { emit }) {
+    const storedIds = ref(getFromLocalStorage('selected-cricketers'));
+    const selectedCountry = ref<string>('');
+    const selectedType = ref<string>('');
+    const sortBy = ref<string>('');
+    const selectedView = ref<boolean>(false);
+    const loading = ref(true);
 
-const emit = defineEmits(['update-coins']);
+    // Set loading to false after component is mounted
+    onMounted(() => {
+      loading.value = false;
+    });
 
-// Reactive States
-const storedIds = ref(getFromLocalStorage('selected-cricketers'));
-const selectedCountry = ref<string>('');
-const selectedType = ref<string>('');
-const sortBy = ref<string>('');
-const selectedView = ref<boolean>(false);
-const loading = ref(true);
+    const toggleView = (view: boolean) => {
+      loading.value = true;
+      selectedView.value = view;
 
-// Set loading to false after component is mounted
-onMounted(() => {
-  loading.value = false;
-});
+      setTimeout(() => {
+        loading.value = false;
+      }, 500);
+    };
 
-const toggleView = (view: boolean) => {
-  loading.value = true;
-  selectedView.value = view;
+    const setCountry = (country: string) => {
+      selectedCountry.value = country;
+    };
 
-  setTimeout(() => {
-    loading.value = false;
-  }, 500);
-};
+    const setType = (type: string) => {
+      selectedType.value = type;
+    };
 
-const setCountry = (country: string) => {
-  selectedCountry.value = country;
-};
+    const setSortBy = (sortOption: string) => {
+      sortBy.value = sortOption;
+    };
 
-const setType = (type: string) => {
-  selectedType.value = type;
-};
+    const setSelectedView = (view: boolean) => {
+      selectedView.value = view;
+    };
 
-const setSortBy = (sortOption: string) => {
-  sortBy.value = sortOption;
-};
+    const filteredCricketers = computed(() => {
+      let result = cricketers;
 
-const filteredCricketers = computed(() => {
-  let result = cricketers;
-
-  // Filter by country
-  if (selectedCountry.value) {
-    result = result.filter(cric => cric.country === selectedCountry.value);
-  }
-
-  // Filter by type
-  if (selectedType.value) {
-    result = result.filter(cric => cric.type === selectedType.value);
-  }
-
-  // Sort by price or rating based on selection
-  if (sortBy.value) {
-    // Copy the original array
-    result = [...result];
-
-    // Sort based on options
-    if (sortBy.value === 'price-asc') {
-      result.sort((a, b) => a.price - b.price);
-    } else if (sortBy.value === 'price-desc') {
-      result.sort((a, b) => b.price - a.price);
-    } else if (sortBy.value === 'rating-asc') {
-      result.sort((a, b) => a.rating - b.rating);
-    } else if (sortBy.value === 'rating-desc') {
-      result.sort((a, b) => b.rating - a.rating);
-    }
-  }
-
-  return result;
-});
-
-const selectedCount = computed(() => storedIds.value.length);
-
-// Add Players to the Selected list
-const addSelectedPlayer = (id: string, price: number, name: string) => {
-  if (coins >= price) {
-    const result = saveToLocalStorage('selected-cricketers', id);
-
-    if (!result.success) {
-      if (result.isExist) {
-        return toast.warn(`${name} is already in your team!`);
+      // Filter by country
+      if (selectedCountry.value) {
+        result = result.filter(cric => cric.country === selectedCountry.value);
       }
-      return toast.error(`Already 11 players in your team!`);
-    }
 
-    emit('update-coins', price, false);
-    toast.success(`You have selected ${name}!`);
+      // Filter by type
+      if (selectedType.value) {
+        result = result.filter(cric => cric.type === selectedType.value);
+      }
 
-    storedIds.value.push({ id, selectedAt: new Date() });
-  } else {
-    toast.error(`Insufficient Balance!`);
-  }
-};
+      // Sort by price or rating based on selection
+      if (sortBy.value) {
+        result = [...result];
+        if (sortBy.value === 'price-asc') {
+          result.sort((a, b) => a.price - b.price);
+        } else if (sortBy.value === 'price-desc') {
+          result.sort((a, b) => b.price - a.price);
+        } else if (sortBy.value === 'rating-asc') {
+          result.sort((a, b) => a.rating - b.rating);
+        } else if (sortBy.value === 'rating-desc') {
+          result.sort((a, b) => b.rating - a.rating);
+        }
+      }
+
+      return result;
+    });
+
+    const selectedCount = computed(() => storedIds.value.length);
+
+    // Add Players to the Selected list
+    const addSelectedPlayer = (id: string, price: number, name: string) => {
+      if (props.coins >= price) {
+        const result = saveToLocalStorage('selected-cricketers', id);
+
+        if (!result.success) {
+          if (result.isExist) {
+            return toast.warn(`${name} is already in your team!`);
+          }
+          return toast.error(`Already 11 players in your team!`);
+        }
+
+        emit('update-coins', price, false);
+        toast.success(`You have selected ${name}!`);
+
+        storedIds.value.push({ id, selectedAt: new Date() });
+      } else {
+        toast.error(`Insufficient Balance!`);
+      }
+    };
+
+    return {
+      cricketers,
+      filteredCricketers,
+      selectedCountry,
+      selectedType,
+      sortBy,
+      setCountry,
+      setType,
+      setSortBy,
+      toggleView,
+      loading,
+      storedIds,
+      selectedCount,
+      addSelectedPlayer,
+      selectedView,
+      setSelectedView,
+    };
+  },
+});
 </script>
 
 <style scoped>

@@ -6,23 +6,21 @@
     >
       <div class="flex items-center justify-between flex-wrap">
         <figure class="flex gap-3 items-center">
-          <!-- Image -->
           <img
             :src="cricketer.image"
             :alt="cricketer.name"
             class="w-32 rounded-md hover:scale-110 transition-all duration-500"
           />
           <div class="flex flex-col gap-1 justify-around flex-wrap">
-            <!-- Name -->
             <h3 class="font-semibold text:lg sm:text-xl">
               {{ cricketer.name }}
             </h3>
-            <!-- Type -->
             <h6 class="text-sm text-gray-600">
               {{ cricketer.type }}
             </h6>
-            <!-- Selection Time -->
-            <h3 class="text-gray-900 text-xs flex items-center gap-0.5">
+            <h3
+              class="text-gray-900 text-xs flex items-center gap-0.5"
+            >
               <LuHistory /> {{ formatDateTime(cricketer.selectedAt) }}
             </h3>
           </div>
@@ -35,17 +33,33 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import type { IStoredCricketer, IStoredId } from '@/types/interface';
-import { LuHistory } from 'vue3-icons/lu';
 import { HiOutlineTrash } from 'vue3-icons/hi2';
+import { LuHistory } from 'vue3-icons/lu';
+import { defineComponent } from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import { formatDateTime } from '@/utilities/formatDate';
 
-const { selectedIds } = defineProps<{ selectedIds: IStoredId[] }>();
+export default defineComponent({
+  components: { HiOutlineTrash, LuHistory },
+  props: {
+    selectedIds: {
+      type: Array as () => IStoredId[],
+      required: true,
+    },
+  },
+  setup(props) {
+    const { selectedIds } = props;
 
-const storedCricketers: IStoredCricketer[] = selectedIds.flatMap(stored => {
-  const matchedCric = cricketers.find(cric => cric.id === stored.id);
-  return matchedCric ? [{ ...matchedCric, selectedAt: stored.selectedAt }] : [];
+    const storedCricketers: IStoredCricketer[] = selectedIds.flatMap(stored => {
+      const matchedCric = cricketers.find(cric => cric.id === stored.id);
+      return matchedCric
+        ? [{ ...matchedCric, selectedAt: stored.selectedAt }]
+        : [];
+    });
+
+    return { storedCricketers, formatDateTime };
+  },
 });
 </script>

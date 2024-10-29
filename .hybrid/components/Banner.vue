@@ -1,34 +1,35 @@
 <template>
-  <!-- Dark BG -->
   <section class="container mx-auto mb-8 mt-28 bg-black/90 rounded-xl">
-    <!-- Gradient BG from PNG (shadowBG) -->
     <div
       class="bg-shadowBG bg-center bg-cover text-white rounded-xl text-center p-6 py-12 space-y-6"
     >
-      <!-- Logo on the Banner -->
       <figure class="w-full mx-auto flex items-center justify-center">
         <img class="w-48" :src="cricket" alt="Cricket Banner Logo" />
       </figure>
-      <!-- Banner Heading -->
       <h2 class="text-3xl lg:text-4xl font-bold">
         Assemble Your Ultimate Dream 11 Cricket Team
       </h2>
-      <!-- Banner Text -->
       <p class="mt-2 text-gray-300 text-lg">Beyond Boundaries Beyond Limits</p>
-      <!-- Button to claim coins -->
       <button @click="addCoins" class="coin-button">Claim Free Credit</button>
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue';
 import cricket from '../assets/images/cricket.png';
 
-const emit = defineEmits(['update-coins']);
-
-const addCoins = () => {
-  emit('update-coins', 1000000, true);
-};
+export default defineComponent({
+  data() {
+    return { cricket };
+  },
+  emits: ['update-coins'],
+  methods: {
+    addCoins() {
+      this.$emit('update-coins', 1000000, true);
+    },
+  },
+});
 </script>
 
 <style scoped>
