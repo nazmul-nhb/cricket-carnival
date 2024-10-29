@@ -1,39 +1,59 @@
-# cricket-carnival
+# Cricket Carnival
 
-This template should help get you started developing with Vue 3 in Vite.
+## Overview
 
-## Recommended IDE Setup
+Cricket Carnival is an interactive web application built with Vue.js that allows users to create their dream cricket team by selecting players from a pool of options. The application features player selection, coin management, and various filters to enhance the user experience. This project demonstrates modern web development practices, including state management, user notifications, and responsive design.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Live Demo
 
-## Type Support for `.vue` Imports in TS
+Check out the live application: [Cricket Carnival](https://cricket-carnival-nhb.vercel.app/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Features
 
-## Customize configuration
+- **Player Selection & Management**: Users can select players for their team while adhering to coin limitations. Selected players can be removed or added back as desired.
+- **Dynamic Filtering & Sorting**: Players can be filtered by country, type (batsman, bowler, all-rounder, wicket-keeper), and sorted by price and rating.
+- **Local Storage Integration**: Selected player IDs are stored in local storage, ensuring user selections persist between sessions. The application handles deletions from both the UI and local storage.
+- **Notifications**: Integrated with Notiflix and Vue3-Toastify for user alerts and notifications to enhance the user experience.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Technologies Used
 
-## Project Setup
+- **Frontend**: Vue.js
+- **Styling**: Tailwind CSS
+- **State Management**: Vue Composition API (with local state management)
+- **User Notifications**: Vue3-Toastify, Notiflix
+- **Date/Time Handling**: Day.js
+- **Build Tool**: Vite
 
-```sh
-npm install
-```
+## Run the Project Locally
 
-### Compile and Hot-Reload for Development
+To run the project locally, follow these steps:
 
-```sh
-npm run dev
-```
+1. **Clone the Repository**:
 
-### Type-Check, Compile and Minify for Production
+   ```bash
+   git clone https://github.com/nazmul-nhb/cricket-carnival.git
+   cd cricket-carnival
+   ```
 
-```sh
-npm run build
-```
+2. **Install Dependencies**:
 
-### Lint with [ESLint](https://eslint.org/)
+   ```bash
+   npm install
+   ```
 
-```sh
-npm run lint
-```
+3. **Run the Development Server**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open Your Browser**:
+   Navigate to `http://localhost:3000` to see the application in action.
+
+## Challenges & Improvements
+
+This project also includes several additional features and improvements:
+
+- **Responsive Layout**: The layout for selected players adjusts to different screen sizes with a three-column layout for desktop and a single-column view for mobile.
+- **Coin Management**: Users can manage their coins effectively, ensuring they don't exceed a limit of 5,000,000 coins.
+- **User Experience Enhancements**: Floating action buttons and clear visual cues improve navigation and usability.
