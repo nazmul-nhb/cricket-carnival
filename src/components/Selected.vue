@@ -58,6 +58,8 @@
       />
     </div>
   </div>
+  <hr class="" />
+  <button class="more-button" @click="addMorePlayers">Add More Players</button>
 </template>
 
 <script setup lang="ts">
@@ -71,7 +73,7 @@ import { Confirm } from 'notiflix';
 
 const { selectedIds } = defineProps<{ selectedIds: IStoredId[] }>();
 
-const emit = defineEmits(['remove-selected']);
+const emit = defineEmits(['remove-selected', 'add-more']);
 
 const storedCricketers = computed((): IStoredCricketer[] => {
   return selectedIds.flatMap(stored => {
@@ -93,4 +95,27 @@ const handleRemoveSelected = (id: string, name: string) => {
     },
   );
 };
+
+const addMorePlayers = () => {
+  emit('add-more', false);
+};
 </script>
+
+<style scoped>
+.more-button {
+  @apply text-lg text-orange-700 border border-orange-700/20 font-semibold rounded-lg shadow-md shadow-orange-700 px-3 py-1.5 transition-all duration-300 ease-in-out;
+}
+
+.more-button:hover {
+  @apply bg-orange-500 text-white -translate-y-1; /* Lift the button slightly */
+}
+
+.more-button:focus {
+  @apply shadow-md bg-orange-600 text-white shadow-orange-600;
+}
+
+/* Add the click effect */
+.more-button:active {
+  @apply bg-orange-700 text-white transform translate-y-1 shadow-md shadow-orange-700/75; /* Move down when pressed */
+}
+</style>

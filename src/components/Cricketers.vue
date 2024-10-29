@@ -1,16 +1,18 @@
 <template>
   <section class="container mx-auto my-16 min-h-[50vh]">
-    <div class="flex justify-end gap-4 mb-4">
+    <div class="flex justify-end gap-4 mb-4 sticky top-24 z-30">
       <button
-        class="toggle-button"
-        :class="{ 'bg-orange-300': !selectedView }"
+        class="toggle-button disabled:cursor-not-allowed"
+        :disabled="!selectedView"
+        :class="{ 'bg-orange-300': !selectedView, 'bg-white': selectedView }"
         @click="toggleView(false)"
       >
         Available
       </button>
       <button
-        class="toggle-button"
-        :class="{ 'bg-orange-300': selectedView }"
+        class="toggle-button disabled:cursor-not-allowed"
+        :disabled="selectedView"
+        :class="{ 'bg-orange-300': selectedView, 'bg-white': !selectedView }"
         @click="toggleView(true)"
       >
         Selected ({{ selectedCount }})
@@ -46,7 +48,7 @@
                 setCountry(target.value);
               }
             "
-            class="border bg-gray-100 shadow-md shadow-gray-600 outline-none focus:shadow-sm focus:shadow-gray-500 focus:bg-gray-200 focus:translate-y-1 px-3 py-1.5 rounded-lg transition-all duration-200"
+            class="bg-gray-100 shadow-md shadow-gray-600 outline-none focus:shadow-sm focus:shadow-gray-500 focus:bg-gray-200 focus:translate-y-1 px-3 py-1.5 rounded-lg transition-all duration-200"
           >
             <option value="">All Countries</option>
             <option value="Afghanistan">Afghanistan</option>
@@ -145,7 +147,7 @@
           v-for="cricketer in filteredCricketers"
           :key="cricketer.id"
           :cricketer="cricketer"
-          @player-selected="addSelectedPlayer"
+          @player-selected="handlePlayerSelection"
         />
       </div>
     </section>
@@ -158,6 +160,7 @@
       <Selected
         :selectedIds="storedIds"
         @remove-selected="removeSelectedPlayer"
+        @add-more="toggleView"
       />
     </section>
   </section>
@@ -249,7 +252,7 @@ const filteredCricketers = computed(() => {
 const selectedCount = computed(() => storedIds.value.length);
 
 // Add Players to the Selected list
-const addSelectedPlayer = (id: string, price: number, name: string) => {
+const handlePlayerSelection = (id: string, price: number, name: string) => {
   if (coins >= price) {
     const result = saveToLocalStorage('selected-cricketers', id);
 
@@ -272,7 +275,7 @@ const addSelectedPlayer = (id: string, price: number, name: string) => {
 // Remove Players from the Selected list
 const removeSelectedPlayer = (id: string, name: string) => {
   const result = removeFromLocalStorage('selected-cricketers', id);
-  
+
   if (!result.success) {
     return toast.error('Something Went Wrong!');
   }
@@ -285,7 +288,7 @@ const removeSelectedPlayer = (id: string, name: string) => {
 
 <style scoped>
 .toggle-button {
-  @apply font-semibold border rounded-lg shadow-md shadow-orange-700 px-3 py-1.5 transition-all duration-300 ease-in-out;
+  @apply font-semibold rounded-lg border border-orange-700/20 shadow-md shadow-orange-700 px-3 py-1.5 transition-all duration-300 ease-in-out;
 }
 
 .toggle-button:hover {
@@ -293,11 +296,11 @@ const removeSelectedPlayer = (id: string, name: string) => {
 }
 
 .toggle-button:focus {
-  @apply border shadow-md shadow-orange-600;
+  @apply shadow-md shadow-orange-600;
 }
 
 /* Add the click effect */
 .toggle-button:active {
-  @apply bg-orange-300 transform translate-y-1 border shadow-sm shadow-orange-400; /* Move down when pressed */
+  @apply bg-orange-300 transform translate-y-1 shadow-sm shadow-orange-700; /* Move down when pressed */
 }
 </style>
