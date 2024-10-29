@@ -1,6 +1,9 @@
 <template>
   <!-- Dark BG -->
-  <section class="container mx-auto mb-8 mt-28 bg-black/90 rounded-xl">
+  <section
+    id="add-coins"
+    class="container mx-auto mb-8 mt-28 bg-black/90 rounded-xl"
+  >
     <!-- Gradient BG from PNG (shadowBG) -->
     <div
       class="bg-shadowBG bg-center bg-cover text-white rounded-xl text-center p-6 py-12 space-y-6"

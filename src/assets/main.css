@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom bounce animation */
 .notiflix-confirm {
   animation: bounce 0.6s ease;
