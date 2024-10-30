@@ -1,5 +1,6 @@
 <template>
   <section class="container mx-auto my-16 min-h-[50vh]">
+    <!-- Available & Selected Buttons -->
     <div class="flex justify-end gap-4 mb-4 sticky top-24 z-30">
       <button
         class="toggle-button disabled:cursor-not-allowed"
@@ -116,29 +117,11 @@
       </div>
 
       <!-- Show No Cricketer -->
-      <div
-        v-if="!filteredCricketers.length"
-        class="mb-6 mt-12 flex flex-col items-center justify-center"
-      >
-        <div class="relative w-20 h-20 mb-4">
-          <div
-            class="absolute inset-0 rounded-full border-8 border-red-200 border-t-red-600 animate-spin"
-          ></div>
-          <span
-            class="absolute inset-0 text-5xl font-black text-red-600 flex items-center justify-center animate-pulse"
-          >
-            !
-          </span>
-        </div>
-
-        <h3
-          class="text-2xl lg:text-3xl font-bold text-red-700 mb-2 animate-pulse"
-        >
-          No Cricketer Found!
-        </h3>
-        <p class="text-lg text-red-400 mb-6">
-          Please, Filter by Other Options!
-        </p>
+      <div v-if="!filteredCricketers.length">
+        <Error
+          heading="No Cricketer Found!"
+          subHeading="Please, Filter by Other Options!"
+        />
       </div>
 
       <!-- Show the Cricketers Grid -->
@@ -172,6 +155,7 @@ import { computed, onMounted, ref } from 'vue';
 import { cricketers } from '@/utilities/cricketers';
 import Cricketer from './Cricketer.vue';
 import Selected from './Selected.vue';
+import Error from './Error.vue';
 import {
   getFromLocalStorage,
   removeFromLocalStorage,

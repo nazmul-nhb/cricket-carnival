@@ -1,26 +1,10 @@
 <template>
   <!-- Show No Selected Cricketer -->
-  <div
-    v-if="!storedCricketers.length"
-    class="mb-6 mt-12 flex flex-col items-center justify-center"
-  >
-    <div class="relative w-20 h-20 mb-4">
-      <div
-        class="absolute inset-0 rounded-full border-8 border-red-200 border-t-red-600 animate-spin"
-      ></div>
-      <span
-        class="absolute inset-0 text-5xl font-black text-red-600 flex items-center justify-center animate-pulse"
-      >
-        !
-      </span>
-    </div>
-
-    <h3
-      class="text-xl lg:text-2xl xl:text-3xl font-bold text-red-700 mb-2 animate-pulse"
-    >
-      You Haven't Selected Any Player Yet!
-    </h3>
-    <p class="text-lg text-red-400 mb-6">Please, Select Some Players!</p>
+  <div v-if="!storedCricketers.length">
+    <Error
+      heading="You Haven't Selected Any Player Yet!"
+      subHeading="Please, Select Some Players!"
+    />
   </div>
   <!-- Grid to Show Selected Cricketers -->
   <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -70,6 +54,7 @@ import { cricketers } from '@/utilities/cricketers';
 import { formatDateTime } from '@/utilities/formatDate';
 import type { IStoredCricketer, IStoredId } from '@/types/interface';
 import { Confirm } from 'notiflix';
+import Error from './Error.vue';
 
 const { selectedIds } = defineProps<{ selectedIds: IStoredId[] }>();
 
